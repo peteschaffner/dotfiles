@@ -52,3 +52,18 @@
 [submodule "vim/bundle/css3"]
 	path = vim/bundle/css3
 	url = https://github.com/hail2u/vim-css3-syntax.git
+[submodule "vim/bundle/delimitmate"]
+	path = vim/bundle/delimitmate
+	url = https://github.com/Raimondi/delimitMate.git
+[submodule "vim/bundle/indent-guides"]
+	path = vim/bundle/indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "vim/bundle/repeat"]
+	path = vim/bundle/repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "vim/bundle/sudo"]
+	path = vim/bundle/sudo
+	url = https://github.com/vim-scripts/sudo.vim.git
+[submodule "vim/bundle/sparkup"]
+	path = vim/bundle/sparkup
+	url = https://github.com/kogakure/vim-sparkup.git
