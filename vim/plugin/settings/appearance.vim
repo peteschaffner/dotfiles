@@ -1,4 +1,4 @@
-" Make it beautiful - colors and fonts
+" Make it beautiful - colors, fonts & gui
 if has("gui_running")
   "tell the term has 256 colors
   set t_Co=256
@@ -18,6 +18,13 @@ if has("gui_running")
   autocmd VimEnter * set guitablabel=%N:\ %t\ %M
 
   set guifont=Inconsolata:h20,Monaco:h17
+
+  " Disable the scrollbars (NERDTree)
+  set guioptions-=r
+  set guioptions-=L
+
+  " Disable the macvim toolbar
+  set guioptions-=T
 else
   "dont load csapprox if we no gui support - silences an annoying warning
   let g:CSApprox_loaded = 1
