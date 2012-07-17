@@ -246,16 +246,3 @@ map <D-%> :so %<CR>
 
 " Remap 'U' to undo, for ease of use
 nmap U <c-r>
-
-" Move cursor by display lines when wrapping
-vmap j gj
-vmap k gk
-vmap $ g$
-vmap ^ g^
-vmap 0 g^
-nmap j gj
-nmap k gk
-nmap $ g$
-nmap ^ g^
-nmap 0 g^
-
