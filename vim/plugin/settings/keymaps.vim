@@ -242,3 +242,6 @@ nmap U <c-r>
 
 " Move focus to the file browser
 nmap <D-N> :maca openFileBrowser:<CR>
+
+" Open terminal here
+nmap <D-O> :!open -a Terminal .<CR><CR>
