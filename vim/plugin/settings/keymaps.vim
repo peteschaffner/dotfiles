@@ -91,10 +91,6 @@ nnoremap ,. '.
 " put the cursor right after the quote
 imap <C-a> <esc>wa
 
-" ==== NERD tree
-" Cmd-Shift-N for nerd tree
-nmap <D-N> :NERDTreeToggle<CR>
-
 " ,q to toggle quickfix window (where you have stuff like GitGrep)
 " ,oq to open it back up (rare)
 nmap <silent> ,qc :CloseSingleConque<CR>:cclose<CR>
@@ -108,9 +104,6 @@ autocmd FileType ruby map <buffer> <D-j> ]m
 autocmd FileType ruby map <buffer> <D-k> [m
 autocmd FileType rspec map <buffer> <D-j> }
 autocmd FileType rspec map <buffer> <D-k> {
-
-" Open the project tree and expose current file in the nerdtree with Ctrl-\
-nnoremap <silent> <C-\> :NERDTreeFind<CR>
 
 " Command-/ to toggle comments
 map <D-/> :TComment<CR>
@@ -246,3 +239,6 @@ map <D-%> :so %<CR>
 
 " Remap 'U' to undo, for ease of use
 nmap U <c-r>
+
+" Move focus to the file browser
+nmap <D-N> :maca openFileBrowser:<CR>
