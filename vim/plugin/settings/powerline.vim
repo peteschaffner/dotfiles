@@ -1,2 +1,6 @@
+" Allways show the powerline
+" set laststatus=2
+
 let g:Powerline_symbols = 'fancy'
-set laststatus=2
+let g:Powerline_theme='skwp'
+let g:Powerline_colorscheme='skwp'

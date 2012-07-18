@@ -3,8 +3,8 @@ if has("gui_running")
   "tell the term has 256 colors
   set t_Co=256
 
-  colorscheme Tomorrow-Night
-  " set background=dark
+  colorscheme solarized
+  set background=dark
 
   " line to show 80 character mark
   set colorcolumn=81
