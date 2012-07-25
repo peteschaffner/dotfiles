@@ -9,7 +9,7 @@
 zstyle ':omz:module:editor' keymap 'vi'
 
 # Auto convert .... to ../..
-zstyle ':omz:module:editor' dot-expansion 'no'
+zstyle ':omz:module:editor' dot-expansion 'yes'
 
 # Set case-sensitivity for completion, history lookup, etc.
 zstyle ':omz:*:*' case-sensitive 'no'
@@ -45,7 +45,7 @@ zstyle ':omz:load' omodule \
 'z' \
 'syntax-highlighting' \
 'prompt' \
-'history-substring-search' \
+'history-substring-search'
 
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
@@ -61,3 +61,7 @@ source "$OMZ/init.zsh"
 if [[ -a ~/.secrets ]] then
   source ~/.secrets
 fi
+
+# So Timing.app can track my terminal usage
+PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
+export PROMPT_COMMAND="${PROMPT_COMMAND} ${PROMPT_TITLE}; "

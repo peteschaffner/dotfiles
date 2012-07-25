@@ -8,6 +8,11 @@ if has("gui_running")
 
   " line to show 80 character mark
   set colorcolumn=81
+  set columns=84
+
+  " make line numbers beautiful
+  highlight LineNr guibg=#002b36
+  highlight LineNr guifg=#073642
 
   " Highlight selected line
   set cursorline

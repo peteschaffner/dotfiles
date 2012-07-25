@@ -245,3 +245,6 @@ nmap <D-N> :maca openFileBrowser:<CR>
 
 " Open terminal here
 nmap <D-O> :!open -a Terminal .<CR><CR>
+
+" Shortcut for find in project (ack)
+nmap <D-F> :Ack 
