@@ -229,14 +229,17 @@ nmap <silent> <D-R> :call RunRspecCurrentFileConque()<CR>
 " Cmd-Shift-L for RSpec Current Line
 nmap <silent> <D-L> :call RunRspecCurrentLineConque()<CR>
 " ,Cmd-R for Last conque command
-nmap <silent> ,<D-R> :call RunLastConqueCommand()<CR>
+nmap <silent> <Leader><D-R> :call RunLastConqueCommand()<CR>
 
 " Get the current highlight group. Useful for then remapping the color
-map ,hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
+map <Leader>hi :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" . " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
 
 " Source current file Cmd-% (good for vim development)
 map <D-%> :so %<CR>
 
+" ============================
+" Misc
+" ============================
 " Remap 'U' to undo, for ease of use
 nmap U <c-r>
 
@@ -248,3 +251,18 @@ nmap <D-O> :!open -a Terminal .<CR><CR>
 
 " Shortcut for find in project (ack)
 nmap <D-F> :Ack 
+
+" Quickly resize window to desired size
+nmap <Leader>rs :set columns=84<CR>
+
+" ============================
+" Buffer navigation
+" ============================
+" Delete current buffer
+nmap <D-X> :confirm bd<CR>
+
+" Previous buffer
+nmap <D-H> :confirm bprev<CR>
+
+" Next buffer
+nmap <D-L> :confirm bnext<CR>
