@@ -255,6 +255,8 @@ nmap <D-F> :Ack
 " Quickly resize window to desired size
 nmap <Leader>rs :set columns=84<CR>
 
+nmap <Leader>n :NumbersToggle<CR>
+
 " ============================
 " Buffer navigation
 " ============================

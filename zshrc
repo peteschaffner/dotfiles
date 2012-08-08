@@ -1,59 +1,58 @@
 #
-# Sets Oh My Zsh options.
+# Sets Prezto options.
 #
 # Authors:
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
 # Set the key mapping style to 'emacs' or 'vi'.
-zstyle ':omz:module:editor' keymap 'vi'
+zstyle ':prezto:module:editor' keymap 'vi'
 
 # Auto convert .... to ../..
-zstyle ':omz:module:editor' dot-expansion 'yes'
+zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # Set case-sensitivity for completion, history lookup, etc.
-zstyle ':omz:*:*' case-sensitive 'no'
+zstyle ':prezto:*:*' case-sensitive 'no'
 
 # Color output (auto set to 'no' on dumb terminals).
-zstyle ':omz:*:*' color 'yes'
+zstyle ':prezto:*:*' color 'yes'
 
 # Auto set the tab and window titles.
-zstyle ':omz:module:terminal' auto-title 'yes'
+zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # Set the Zsh modules to load (man zshmodules).
-# zstyle ':omz:load' zmodule 'attr' 'stat'
+# zstyle ':prezto:load' zmodule 'attr' 'stat'
 
 # Set the Zsh functions to load (man zshcontrib).
-# zstyle ':omz:load' zfunction 'zargs' 'zmv'
+# zstyle ':prezto:load' zfunction 'zargs' 'zmv'
 
-# Set the Oh My Zsh modules to load (browse modules).
+# Set the Prezto modules to load (browse modules).
 # The order matters.
-zstyle ':omz:load' omodule \
-'environment' \
-'terminal' \
-'editor' \
-'completion' \
-'history' \
-'directory' \
-'spectrum' \
-'utility' \
-'git' \
-'node' \
-'osx' \
-'rsync' \
-'ruby' \
-'z' \
-'syntax-highlighting' \
-'prompt' \
-'history-substring-search'
+zstyle ':prezto:load' pmodule \
+  'environment' \
+  'terminal' \
+  'editor' \
+  'history' \
+  'directory' \
+  'spectrum' \
+  'utility' \
+  'completion' \
+  'node' \
+  'osx' \
+  'rsync' \
+  'ruby' \
+  'z' \
+  'syntax-highlighting' \
+  'history-substring-search' \
+  'prompt'
 
 # Set the prompt theme to load.
 # Setting it to 'random' loads a random theme.
 # Auto set to 'off' on dumb terminals.
-zstyle ':omz:module:prompt' theme 'sorin'
+zstyle ':prezto:module:prompt' theme 'sorin'
 
-# This will make you shout: OH MY ZSHELL!
-source "$OMZ/init.zsh"
+# Source Prezto.
+source "$PDIR/init.zsh"
 
 # Customize to your needs...
 
