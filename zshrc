@@ -37,6 +37,7 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
+  'git' \
   'node' \
   'osx' \
   'rsync' \

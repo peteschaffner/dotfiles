@@ -15,7 +15,7 @@ if has("gui_running")
   highlight LineNr guifg=#073642
 
   " Highlight selected line
-  set cursorline
+  " set cursorline
 
   set guifont=Inconsolata:h20,Monaco:h17
 
