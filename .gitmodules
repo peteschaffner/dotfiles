@@ -88,3 +88,9 @@
 [submodule "vim/bundle/snipmate-snippets"]
 	path = vim/bundle/snipmate-snippets
 	url = https://github.com/honza/snipmate-snippets.git
+[submodule "vim/bundle/html-escape"]
+	path = vim/bundle/html-escape
+	url = git@github.com:peteschaffner/vim-html-escape.git
+[submodule "vim/bundle/haml-sass"]
+	path = vim/bundle/haml-sass
+	url = https://github.com/tpope/vim-haml.git
