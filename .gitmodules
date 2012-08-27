@@ -94,3 +94,6 @@
 [submodule "vim/bundle/haml-sass"]
 	path = vim/bundle/haml-sass
 	url = https://github.com/tpope/vim-haml.git
+[submodule "vim/bundle/open-url"]
+	path = vim/bundle/open-url
+	url = https://github.com/henrik/vim-open-url.git
