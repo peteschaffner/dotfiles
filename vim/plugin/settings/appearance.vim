@@ -23,8 +23,6 @@ if has("gui_running")
   " set guioptions-=r
   set guioptions-=L
 
-  " Disable the macvim toolbar
-  set guioptions-=T
 else
   "dont load csapprox if we no gui support - silences an annoying warning
   let g:CSApprox_loaded = 1
