@@ -97,3 +97,6 @@
 [submodule "vim/bundle/open-url"]
 	path = vim/bundle/open-url
 	url = https://github.com/henrik/vim-open-url.git
+[submodule "vim/bundle/taskpaper"]
+	path = vim/bundle/taskpaper
+	url = https://github.com/davidoc/taskpaper.vim.git
