@@ -2,18 +2,33 @@
 
 echo ""
 echo "----------------------"
+echo "Installing Homebrew"
+echo "----------------------"
+echo ""
+
+curl -fsSkL raw.github.com/mxcl/homebrew/go | ruby
+brew doctor
+
+echo ""
+echo "Installing ack, ctags, git, git-extras, hub, node, rbenv & ruby-build..."
+
+brew update
+brew install ack ctags git git-extras hub rbenv ruby-build node
+
+
+echo ""
+echo "----------------------"
 echo "Installing Prezto"
 echo "----------------------"
 echo ""
 
-echo "Cloning repo..."
 echo ""
+echo "Cloning repo..."
 
 git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
 
 echo ""
 echo "Copy/link Zsh config files..."
-echo ""
 
 cp ~/.zprezto/runcoms/zlogin ~/.zshenv
 ln -s $PWD/zprofile ~/.zprofile
@@ -24,13 +39,11 @@ cp ~/.zprezto/runcoms/zlogout ~/.zlogout
 
 echo ""
 echo "Set Zsh as your default shell..."
-echo ""
 
 chsh -s /bin/zsh
 
 echo ""
 echo "Fixing pathing problem introduced in Leopard..."
-echo ""
 
 sudo chmod ugo-x /usr/libexec/path_helper
 
@@ -60,12 +73,11 @@ echo ""
 
 echo ""
 echo "Touching .secrets, don't forget to populate it"
-echo ""
 
 touch ~/.secrets
 
 echo ""
 echo "...last but not least, install the fonts in ~/.dotfiles/fonts/"
-echo ""
 
+echo ""
 echo "DONE!"
