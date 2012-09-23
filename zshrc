@@ -18,4 +18,4 @@ if [[ -a ~/.secrets ]] then
 fi
 
 # Aliases
-alias git=hub
+eval "$(hub alias -s)"
