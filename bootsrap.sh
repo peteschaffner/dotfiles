@@ -30,12 +30,11 @@ git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
 echo ""
 echo "Copy/link Zsh config files..."
 
-cp ~/.zprezto/runcoms/zlogin ~/.zshenv
-ln -s $PWD/zprofile ~/.zprofile
+ln -s ~/.zprezto/runcoms/zshenv ~/.zshenv
 ln -s $PWD/zshrc ~/.zshrc
 ln -s $PWD/zpreztorc ~/.zpreztorc
-cp ~/.zprezto/runcoms/zlogin ~/.zlogin
-cp ~/.zprezto/runcoms/zlogout ~/.zlogout
+ln -s ~/.zprezto/runcoms/zlogin ~/.zlogin
+ln -s ~/.zprezto/runcoms/zlogout ~/.zlogout
 
 echo ""
 echo "Set Zsh as your default shell..."
@@ -46,6 +45,11 @@ echo ""
 echo "Fixing pathing problem introduced in Leopard..."
 
 sudo chmod ugo-x /usr/libexec/path_helper
+
+echo ""
+echo "Fixing MacVim path problem..."
+
+sudo mv /etc/zshenv /etc/zprofile
 
 echo ""
 echo "----------------"
