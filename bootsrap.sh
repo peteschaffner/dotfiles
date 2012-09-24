@@ -10,10 +10,10 @@ curl -fsSkL raw.github.com/mxcl/homebrew/go | ruby
 brew doctor
 
 echo ""
-echo "Installing ack, ctags, git, git-extras, hub, node, rbenv & ruby-build..."
+echo "Installing ack, ctags, git, git-extras, hub, node, rbenv, ruby-build & zsh"
 
 brew update
-brew install ack ctags git git-extras hub rbenv ruby-build node
+brew install ack ctags git git-extras hub rbenv ruby-build node zsh
 
 
 echo ""
@@ -39,16 +39,13 @@ ln -s ~/.zprezto/runcoms/zlogout ~/.zlogout
 echo ""
 echo "Set Zsh as your default shell..."
 
-chsh -s /bin/zsh
+sudo echo "/usr/local/bin/zsh" >> /etc/shells
+chsh -s /usr/local/bin/zsh
 
 echo ""
-echo "Fixing pathing problem introduced in Leopard..."
+echo "Fixing pathing problems..."
 
 sudo chmod ugo-x /usr/libexec/path_helper
-
-echo ""
-echo "Fixing MacVim path problem..."
-
 sudo mv /etc/zshenv /etc/zprofile
 
 echo ""
