@@ -17,7 +17,7 @@ if has("gui_running")
   " Highlight selected line
   " set cursorline
 
-  set guifont=Inconsolata:h18,Monaco:h17
+  set guifont=Inconsolata:h20,Menlo:h18
 
   " Disable the scrollbars
   " set guioptions-=r
