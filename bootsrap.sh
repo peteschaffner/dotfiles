@@ -35,6 +35,7 @@ ln -s $PWD/zshrc ~/.zshrc
 ln -s $PWD/zpreztorc ~/.zpreztorc
 ln -s ~/.zprezto/runcoms/zlogin ~/.zlogin
 ln -s ~/.zprezto/runcoms/zlogout ~/.zlogout
+ln -s $PWD/powconfig ~/.powconfig
 
 echo ""
 echo "Set Zsh as your default shell..."
