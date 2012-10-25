@@ -4,15 +4,15 @@ if has("gui_running")
   set t_Co=256
 
   colorscheme solarized
-  set background=dark
+  set background=light
 
   " line to show 80 character mark
   set colorcolumn=81
   set columns=84
 
   " make line numbers beautiful
-  highlight LineNr guibg=#002b36
-  highlight LineNr guifg=#073642
+  highlight LineNr guibg=#fdf6e3
+  highlight LineNr guifg=#eee8d5
 
   " Highlight selected line
   " set cursorline
@@ -20,7 +20,7 @@ if has("gui_running")
   set guifont=Inconsolata:h20,Menlo:h18
 
   " Disable the scrollbars
-  " set guioptions-=r
+  set guioptions-=r
   set guioptions-=L
 
 else

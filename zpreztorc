@@ -42,7 +42,6 @@ zstyle ':prezto:load' pmodule \
   'osx' \
   'rsync' \
   'ruby' \
-  'z' \
   'syntax-highlighting' \
   'history-substring-search' \
   'prompt'
