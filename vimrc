@@ -1,98 +1,292 @@
-" =============== Pathogen ===============
+" vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
 
-runtime bundle/pathogen/autoload/pathogen.vim
-call pathogen#infect()
-call pathogen#helptags()
+" Environment {
+    " Basics {
+        set nocompatible        " must be first line
+        " one mac use * register for copy-paste
+        "set clipboard=unnamed
+    " }
 
+    " Setup Bundle Support {
+        " The next three lines ensure that the ~/.vim/bundle/ system works
+        filetype off
+        set rtp+=~/.vim/bundle/vundle
+        call vundle#rc()
+        " Source our bundle list
+        source ~/.dotfiles/vimrc.bundles
+    " }
+" }
 
-" ================ General Config ====================
+" General {
+    filetype plugin indent on       " Automatically detect file types.
+    syntax on                       " syntax highlighting
+    set mouse=a                     " automatically enable mouse usage
+    scriptencoding utf-8
 
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
-set number                      "Line numbers are good
-set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=1000                "Store lots of :cmdline history
-set showcmd                     "Show incomplete cmds down the bottom
-set showmode                    "Show current mode down the bottom
-set gcr=a:blinkon0              "Disable cursor blink
-set visualbell                  "No sounds
-set autoread                    "Reload files changed outside vim
-set encoding=utf-8
-set shortmess+=I                "Hide splash screen
+    set background=dark
 
-" This makes vim act like all other editors, buffers can
-" exist in the background without being in a window.
-" http://items.sjbach.com/319/configuring-vim-right
-set hidden
+    set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
+    set shortmess+=I                " remove splash screen
+    set history=1000                " Store a ton of history (default is 20)
+    set spell                       " spell checking on
+    set hidden                      " allow buffer switching without saving
+    set autoread                    " reload files changed outside vim
 
-"turn on syntax highlighting
-syntax on
+    " Enable omni completion.
+    autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+    autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+    autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+    autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
-" ================ Search Settings  =================
+    " Turn off swap files and
+    set noswapfile
+    set nobackup
+    set nowb
 
-set incsearch        "Find the next match as we type the search
-set hlsearch         "Hilight searches by default
-set viminfo='100,f1  "Save up to 100 marks, enable capital marks
-set ignorecase
-set smartcase
+    silent !mkdir ~/.vim/backups > /dev/null 2>&1
+    set undodir=~/.vim/backups
+    set undofile
+" }
 
-" ================ Turn Off Swap Files ==============
+" Vim UI {
+    " Make it beautiful - colors, fonts & gui
+    if has("gui_running")
+        set t_Co=256                    " tell the term has 256 colors
+        color solarized                 " set colorscheme
 
-set noswapfile
-set nobackup
-set nowb
+        " line to show 80 character mark
+        set colorcolumn=81
+        set columns=84
+        set cursorline                  " highlight current line
 
-" ================ Persistent Undo ==================
-" Keep undo history across sessions, by storing in file.
-" Only works all the time.
+        " make line numbers beautiful
+        highlight LineNr guibg=#002b36
+        highlight LineNr guifg=#073642
+        hi CursorLineNr guifg=#586e75
 
-silent !mkdir ~/.vim/backups > /dev/null 2>&1
-set undodir=~/.vim/backups
-set undofile
+        set guifont=Inconsolata:h15     " set font/font-size
 
-" ================ Indentation ======================
+        " Disable the scrollbars
+        " set guioptions-=r
+        set guioptions-=L
 
-set autoindent
-set smartindent
-set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
-set expandtab
+        set laststatus=2                " always show statusline
+    endif
 
-filetype plugin on
-filetype indent on
+    set showmode                    " display the current mode
+    set backspace=indent,eol,start  " backspace for dummies
+    set linespace=0                 " No extra spaces between rows
+    set nu                          " Line numbers on
+    set gcr=a:blinkon0              " Disable cursor blink
+    set visualbell                  " No sounds
+    set showmatch                   " show matching brackets/parenthesis
+    set incsearch                   " find as you type search
+    set hlsearch                    " highlight search terms
+    set winminheight=0              " windows can be 0 line high
+    set ignorecase                  " case insensitive search
+    set smartcase                   " case sensitive when uc present
+    set wildmenu                    " show list instead of just completing
+    set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
+    set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
+    set scrolloff=8                 " start scrolling when we're 8 lines away from margins
+    set sidescrolloff=15
+    set sidescroll=1
+    set nofoldenable                " don't fold by default
+    set foldmethod=indent           " fold based on indent
+    set list
+    set listchars=tab:\ \ ,trail:·,extends:#,nbsp:. " Highlight problematic whitespace
+" }
 
-" Display tabs and trailing spaces visually
-set list listchars=tab:\ \ ,trail:·
+" Formatting {
+    set nowrap                      " don't wrap long lines by default
+    set autoindent                  " indent at the same level of the previous line
+    set shiftwidth=2                " use indents of 2 spaces
+    set expandtab                   " tabs are spaces, not tabs
+    set tabstop=2                   " an indentation every four columns
+    set softtabstop=2               " let backspace delete indent
+    set matchpairs+=<:>             " match, to be used with %
+    set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
+    " Remove trailing whitespaces and ^M chars
+    autocmd FileType c,cpp,java,php,javascript,python,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+" }
 
-set nowrap       "Don't wrap lines
+" Key (re)Mappings {
+    let mapleader = ','
 
-" ================ Folds ============================
+    " Easier window splits
+    nnoremap <silent> vv <C-w>v
+    nnoremap <silent> ss <C-w>s
 
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "don't fold by default
-set foldlevel=1000      "don't fold recursively on first zc/za
+    " Move between splits easily
+    nnoremap <silent> <C-h> <C-w>h
+    nnoremap <silent> <C-l> <C-w>l
+    nnoremap <silent> <C-k> <C-w>k
+    nnoremap <silent> <C-j> <C-w>j
 
-" ================ Completion =======================
+    "Clear current search highlight by double tapping //
+    nmap <silent> // :nohlsearch<CR>
 
-set wildmode=list:longest
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
-set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
-set wildignore+=*vim/backups*
-set wildignore+=*sass-cache*
-set wildignore+=*DS_Store*
-set wildignore+=vendor/rails/**
-set wildignore+=vendor/cache/**
-set wildignore+=*.gem
-set wildignore+=log/**
-set wildignore+=tmp/**
-set wildignore+=*.png,*.jpg,*.gif
+    " Apple-* Highlight all occurrences of current word (like '*' but without moving)
+    " http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches
+    nnoremap <D-*> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 
-" ================ Scrolling ========================
+    " Remap 'U' to undo, for ease of use
+    nmap U <c-r>
 
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
-set sidescrolloff=15
-set sidescroll=1
+    " Move focus to the file browser
+    nmap <D-N> :maca openFileBrowser:<CR>
+
+    " Open terminal here
+    nmap <silent> <D-O> :!open -a Terminal .<CR><CR>
+
+    " Quickly resize window to desired size
+    nmap <Leader>rs :set columns=84<CR>
+
+    " Toggle relative line numbers
+    nmap <Leader>n :NumbersToggle<CR>
+
+    " Buffer navigation
+    " Delete current buffer
+    nmap <D-X> :confirm bd<CR>
+    " Previous buffer
+    nmap <D-H> :confirm bprev<CR>
+    " Next buffer
+    nmap <D-L> :confirm bnext<CR>
+
+    " Wrapped lines goes down/up to next row, rather than next line in file.
+    nnoremap j gj
+    nnoremap k gk
+
+    " For when you forget to sudo.. Really Write the file.
+    cmap w!! w !sudo tee % >/dev/null
+" }
+
+" Bundle settings {
+    " Ack {
+        " Shortcut for find in project (ack)
+        nmap <D-F> :Ack 
+    " }
+
+    " ctrlP {
+        let g:ctrlp_custom_ignore = '\.git$'
+
+        " Default to filename searches
+        let g:ctrlp_by_filename = 1
+
+        let g:ctrlp_map = ',t'
+        nnoremap <silent> <leader>t :CtrlPMixed<CR>
+
+        " Additional mapping for buffer search
+        nnoremap <silent> <leader>b :CtrlPBuffer<CR>
+        nnoremap <silent> <C-b> :CtrlPBuffer<CR>
+
+        " Cmd-Shift-P to clear the cache
+        nnoremap <silent> <D-P> :ClearCtrlPCache<cr>
+    " }
+
+    " delimitmate {
+        let delimitMate_expand_cr = 1
+        let delimitMate_expand_space = 1
+        au FileType html let b:delimitMate_matchpairs = '(:),[:],{:}'
+    " }
+
+    " gundo {
+        nnoremap <silent> <leader>u :GundoToggle<CR>
+        let g:gundo_right = 1
+    " }
+
+    " surround {
+        " ,# Surround a word with #{ruby interpolation}
+        map <leader># ysiw#
+        vmap <leader># c#{<C-R>"}<ESC>
+
+        " ," Surround a word with "quotes"
+        map <leader>" ysiw"
+        vmap <leader>" c"<C-R>""<ESC>
+
+        " ,' Surround a word with 'single quotes'
+        map <leader>' ysiw'
+        vmap <leader>' c'<C-R>"'<ESC>
+
+        " ,) or ,( Surround a word with (parens)
+        " The difference is in whether a space is put in
+        map <leader>( ysiw(
+        map <leader>) ysiw)
+        vmap <leader>( c( <C-R>" )<ESC>
+        vmap <leader>) c(<C-R>")<ESC>
+
+        " ,[ Surround a word with [brackets]
+        map <leader>] ysiw]
+        map <leader>[ ysiw[
+        vmap <leader>[ c[ <C-R>" ]<ESC>
+        vmap <leader>] c[<C-R>"]<ESC>
+
+        " ,{ Surround a word with {braces}
+        map <leader>} ysiw}
+        map <leader>{ ysiw{
+        vmap <leader>} c{ <C-R>" }<ESC>
+        vmap <leader>{ c{<C-R>"}<ESC>
+    " }
+
+    " nerdCommenter {
+        " Command-/ to toggle comments
+        map <D-/> <plug>NERDCommenterToggle
+    " }
+
+    " tabular {
+        " Hit Cmd-Shift-A then type a character you want to align by
+        nmap <D-A> :Tabularize /
+        vmap <D-A> :Tabularize /
+    " }
+
+    " ruby {
+        let g:rubycomplete_buffer_loading = 1
+        "let g:rubycomplete_classes_in_global = 1
+        "let g:rubycomplete_rails = 1
+    " }
+
+      " powerline {
+          let g:Powerline_symbols = 'fancy'
+          let g:Powerline_theme='solarized256'
+          let g:Powerline_colorscheme='solarized256'
+      " }
+
+      " yankring {
+          let g:yankring_history_file = '.yankring-history'
+          nnoremap ,y :YRShow<CR>
+      " }
+
+      " supertab {
+          let g:SuperTabCrMapping = 0
+          let g:SuperTabDefaultCompletionType = 'context'
+          " temporary workaround
+          imap <a-tab> <c-x><c-o>
+      " }
+" }
+
+" Functions {
+    " Strip trailing whitespace
+    function! <SID>StripTrailingWhitespaces()
+        " Preparation: save last search, and cursor position.
+        let _s=@/
+        let l = line(".")
+        let c = col(".")
+        " Do the business:
+        %s/\s\+$//e
+        " Clean up: restore previous search history, and cursor position
+        let @/=_s
+        call cursor(l, c)
+    endfunction
+    command! StripTrailingWhitespaces call <SID>StripTrailingWhitespaces()
+    nmap ,ws :StripTrailingWhitespaces<CR>
+
+    " Wrapping function
+    function! SetupWrapping()
+        set wrap! linebreak! nolist!
+        let &showbreak='  '
+    endfunction
+    command! Wrap :call SetupWrapping()
+    map <Leader>w :Wrap<CR>
+" }
