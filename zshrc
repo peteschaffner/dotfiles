@@ -19,6 +19,6 @@ fi
 
 # Aliases
 eval "$(hub alias -s)"
-alias tt='python ~/path/to/t.py --task-dir ~/Dropbox --list tasks'
-alias t='python ~/path/to/t.py --task-dir . --list tasks'
-alias b='python ~/path/to/t.py --task-dir . --list bugs'
+alias tt='python ~/.dotfiles/t.py --task-dir ~/Dropbox --list tasks'
+alias t='python ~/.dotfiles/t.py --task-dir . --list tasks'
+alias b='python ~/.dotfiles/t.py --task-dir . --list bugs'
