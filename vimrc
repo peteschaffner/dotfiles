@@ -39,6 +39,9 @@
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
     autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+    " I prefer the Omni-Completion tip window to close when a selection is made
+    autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+    autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
     " Turn off swap files and
     set noswapfile
@@ -179,9 +182,8 @@
     " }
 
     " ctrlP {
+        let g:ctrlp_working_path_mode = 'rw'
         let g:ctrlp_custom_ignore = '\.git$'
-
-        " Default to filename searches
         let g:ctrlp_by_filename = 1
 
         let g:ctrlp_map = ',t'
@@ -269,9 +271,11 @@
 
       " supertab {
           let g:SuperTabCrMapping = 0
-          let g:SuperTabDefaultCompletionType = 'context'
-          " temporary workaround
-          imap <a-tab> <c-x><c-o>
+          let g:SuperTabDefaultCompletionType = '<c-x><c-u>'
+          autocmd FileType *
+              \ if &omnifunc != '' |
+              \     call SuperTabChain(&omnifunc, '<c-p>') |
+              \ endif
       " }
 
       " fugitive {
