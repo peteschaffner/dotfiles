@@ -72,7 +72,7 @@
         " set guioptions-=r
         set guioptions-=L
 
-        set laststatus=2                " always show statusline
+        "set laststatus=2                " always show statusline
     endif
 
     set showmode                    " display the current mode
@@ -164,6 +164,12 @@
 
     " Encode HTML entities
     nmap <silent> <leader>he :%!perl -p -i -e 'BEGIN { use HTML::Entities; use Encode; } $_=Encode::decode_utf8($_) unless Encode::is_utf8($_); $_=Encode::encode("ascii", $_, sub{HTML::Entities::encode_entities(chr shift)});'<cr>
+
+    " Toggle Solarized theme
+    nmap <leader>s :ToggleSolarized<cr>
+
+    " Toggle line wrapping
+    map <Leader>w :Wrap<CR>
 " }
 
 " Bundle settings {
@@ -267,6 +273,10 @@
           " temporary workaround
           imap <a-tab> <c-x><c-o>
       " }
+
+      " fugitive {
+          noremap <silent> <leader>gs :Gstatus<cr>
+      " }
 " }
 
 " Functions {
@@ -291,5 +301,26 @@
         let &showbreak='  '
     endfunction
     command! Wrap :call SetupWrapping()
-    map <Leader>w :Wrap<CR>
+
+    " Toggle Solarized theme
+    function! ToggleSolarizedTheme()
+      if (&background == 'dark')
+        set background=light
+        highlight LineNr guibg=#fdf6e3
+        highlight LineNr guifg=#eee8d5
+        hi CursorLineNr guifg=#93a1a1
+        let g:Powerline_theme='solarized256'
+        let g:Powerline_colorscheme='solarized'
+        :PowerlineReloadColorscheme
+      else
+        set background=dark
+        highlight LineNr guibg=#002b36
+        highlight LineNr guifg=#073642
+        hi CursorLineNr guifg=#586e75
+        let g:Powerline_theme='solarized256'
+        let g:Powerline_colorscheme='solarized256'
+        :PowerlineReloadColorscheme
+      endif
+    endfunction
+    command! ToggleSolarized :call ToggleSolarizedTheme()
 " }
