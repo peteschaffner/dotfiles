@@ -22,3 +22,5 @@ eval "$(hub alias -s)"
 alias tt='python ~/.dotfiles/t.py --task-dir ~/Dropbox --list tasks'
 alias t='python ~/.dotfiles/t.py --task-dir . --list tasks'
 alias b='python ~/.dotfiles/t.py --task-dir . --list bugs'
+
+alias rsx="rsync-synchronize --exclude-from '${ZDOTDIR:-$HOME}/.rsyncignore'"
