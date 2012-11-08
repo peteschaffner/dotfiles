@@ -1,0 +1,3 @@
+[submodule "chocolat/mixins/open-terminal-here.chocmixin"]
+	path = chocolat/mixins/open-terminal-here.chocmixin
+	url = git@github.com:peteschaffner/open-terminal-here.chocmixin.git
