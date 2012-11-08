@@ -11,4 +11,5 @@ Icon
 Session.vim
 .netrwhist
 *.sublime-workspace
+*.sublime-project
 *.sass-cache
