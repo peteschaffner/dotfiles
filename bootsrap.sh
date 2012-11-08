@@ -59,6 +59,10 @@ ln -s $PWD/vimrc ~/.vimrc
 ln -s $PWD/vim ~/.vim
 
 echo ""
+echo "Installing plugins..."
+vim -u ~/.dotfiles/vimrc.bundles +BundleInstall! +BundleClean +qall
+
+echo ""
 echo "----------------"
 echo "Configuring Git"
 echo "----------------"
@@ -79,7 +83,9 @@ echo "Touching .secrets, don't forget to populate it"
 touch ~/.secrets
 
 echo ""
-echo "...last but not least, install the fonts in ~/.dotfiles/fonts/"
+echo "...last but not least, installing fonts for vim statusline"
+
+cd $PWD/fonts && for f in * ; do cp $f ~/Library/Fonts/$f ; done
 
 echo ""
 echo "DONE!"
