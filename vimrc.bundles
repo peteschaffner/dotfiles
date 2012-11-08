@@ -17,6 +17,8 @@
     " Deps {
         Bundle 'gmarik/vundle'
         Bundle 'mileszs/ack.vim'
+        Bundle 'MarcWeber/vim-addon-mw-utils'
+        Bundle 'tomtom/tlib_vim'
     " }
 
     " General {
@@ -44,6 +46,11 @@
         Bundle 'Raimondi/delimitMate'
     " }
 
+    " Snippets {
+        Bundle 'garbas/vim-snipmate'
+        Bundle 'honza/snipmate-snippets'
+    " }
+
     " JavaScript {
         Bundle 'leshill/vim-json'
         Bundle 'pangloss/vim-javascript'
@@ -53,6 +60,7 @@
 
     " HTML {
         Bundle 'othree/html5.vim'
+        Bundle 'mattn/zencoding-vim'
     " }
 
     " CSS {

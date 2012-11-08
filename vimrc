@@ -15,6 +15,11 @@
         " Source our bundle list
         source ~/.dotfiles/vimrc.bundles
     " }
+
+    " Fixes {
+        " fix for Shopify liquid templates loosing HTML highlighting
+        autocmd BufNewFile,BufReadPost page.*.liquid let b:liquid_subtype = 'html'
+    " }
 " }
 
 " General {
@@ -23,7 +28,7 @@
     set mouse=a                     " automatically enable mouse usage
     scriptencoding utf-8
 
-    set background=dark
+    set background=light
 
     set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
     set shortmess+=I                " remove splash screen
@@ -33,6 +38,7 @@
     set autoread                    " reload files changed outside vim
 
     " Enable omni completion.
+    autocmd FileType * setlocal omnifunc=syntaxcomplete#Complete
     autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
     autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
     autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
@@ -65,9 +71,9 @@
         set cursorline                  " highlight current line
 
         " make line numbers beautiful
-        highlight LineNr guibg=#002b36
-        highlight LineNr guifg=#073642
-        hi CursorLineNr guifg=#586e75
+        highlight LineNr guibg=#fdf6e3
+        highlight LineNr guifg=#eee8d5
+        hi CursorLineNr guifg=#93a1a1
 
         set guifont=Inconsolata:h15     " set font/font-size
 
@@ -99,7 +105,7 @@
     set nofoldenable                " don't fold by default
     set foldmethod=indent           " fold based on indent
     set list
-    set listchars=tab:\ \ ,trail:·,extends:#,nbsp:. " Highlight problematic whitespace
+    set listchars=tab:\ \ ,trail:·,nbsp:. " Highlight problematic whitespace
 " }
 
 " Formatting {
@@ -146,9 +152,6 @@
 
     " Quickly resize window to desired size
     nmap <Leader>rs :set columns=84<CR>
-
-    " Toggle relative line numbers
-    nmap <Leader>n :NumbersToggle<CR>
 
     " Buffer navigation
     " Delete current buffer
@@ -200,7 +203,6 @@
     " delimitmate {
         let delimitMate_expand_cr = 1
         let delimitMate_expand_space = 1
-        au FileType html let b:delimitMate_matchpairs = '(:),[:],{:}'
     " }
 
     " gundo {
@@ -244,6 +246,7 @@
     " nerdCommenter {
         " Command-/ to toggle comments
         map <D-/> <plug>NERDCommenterToggle
+        imap <D-/> <plug>NERDCommenterInsert
     " }
 
     " tabular {
@@ -261,7 +264,11 @@
       " powerline {
           let g:Powerline_symbols = 'fancy'
           let g:Powerline_theme='solarized256'
-          let g:Powerline_colorscheme='solarized256'
+          let g:Powerline_colorscheme='solarized'
+          " so our colorscheme is always fresh
+          if has("gui_running")
+              autocmd VimEnter * PowerlineReloadColorscheme
+          endif
       " }
 
       " yankring {
@@ -271,7 +278,8 @@
 
       " supertab {
           let g:SuperTabCrMapping = 0
-          let g:SuperTabDefaultCompletionType = '<c-x><c-u>'
+          let g:SuperTabDefaultCompletionType = 'context'
+          "let g:SuperTabContextDefaultCompletionType = '<c-x><c-u>'
           autocmd FileType *
               \ if &omnifunc != '' |
               \     call SuperTabChain(&omnifunc, '<c-p>') |
@@ -280,6 +288,16 @@
 
       " fugitive {
           noremap <silent> <leader>gs :Gstatus<cr>
+      " }
+
+      " snipmate {
+          let g:snipMate = {}
+          let g:snipMate.scope_aliases = {} 
+          let g:snipMate.scope_aliases['liquid'] = 'html,liquid'
+      " }
+
+      " numbers {
+          nmap <Leader>n :NumbersToggle<CR>
       " }
 " }
 
@@ -313,7 +331,6 @@
         highlight LineNr guibg=#fdf6e3
         highlight LineNr guifg=#eee8d5
         hi CursorLineNr guifg=#93a1a1
-        let g:Powerline_theme='solarized256'
         let g:Powerline_colorscheme='solarized'
         :PowerlineReloadColorscheme
       else
@@ -321,7 +338,6 @@
         highlight LineNr guibg=#002b36
         highlight LineNr guifg=#073642
         hi CursorLineNr guifg=#586e75
-        let g:Powerline_theme='solarized256'
         let g:Powerline_colorscheme='solarized256'
         :PowerlineReloadColorscheme
       endif
