@@ -13,7 +13,7 @@ echo ""
 echo "Installing ack, ctags, git, git-extras, hub, node, rbenv, ruby-build & zsh"
 
 brew update
-brew install ack ctags git git-extras hub rbenv ruby-build node zsh
+brew install ack ctags git git-extras hub rbenv ruby-build node zsh fasd
 
 
 echo ""

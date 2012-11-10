@@ -44,6 +44,7 @@ zstyle ':prezto:load' pmodule \
   'ruby' \
   'syntax-highlighting' \
   'history-substring-search' \
+  'fasd' \
   'prompt'
 
 # Set the prompt theme to load.

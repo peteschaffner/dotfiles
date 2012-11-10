@@ -62,7 +62,6 @@
 " Vim UI {
     " Make it beautiful - colors, fonts & gui
     if has("gui_running")
-        set t_Co=256                    " tell the term has 256 colors
         color solarized                 " set colorscheme
 
         " line to show 80 character mark
@@ -75,10 +74,10 @@
         highlight LineNr guifg=#eee8d5
         hi CursorLineNr guifg=#93a1a1
 
-        set guifont=Inconsolata:h15     " set font/font-size
+        set guifont=Inconsolata:h16     " set font/font-size
 
         " Disable the scrollbars
-        " set guioptions-=r
+        set guioptions-=r
         set guioptions-=L
 
         "set laststatus=2                " always show statusline
@@ -262,13 +261,13 @@
     " }
 
       " powerline {
-          let g:Powerline_symbols = 'fancy'
+          "let g:Powerline_symbols = 'fancy'
           let g:Powerline_theme='solarized256'
           let g:Powerline_colorscheme='solarized'
           " so our colorscheme is always fresh
-          if has("gui_running")
-              autocmd VimEnter * PowerlineReloadColorscheme
-          endif
+          "if has("gui_running")
+              "autocmd VimEnter * PowerlineReloadColorscheme
+          "endif
       " }
 
       " yankring {
