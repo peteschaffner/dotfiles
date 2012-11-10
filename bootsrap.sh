@@ -30,7 +30,7 @@ git clone --recursive https://github.com/sorin-ionescu/prezto.git ~/.zprezto
 echo ""
 echo "Copy/link Zsh config files..."
 
-ln -s ~/.zprezto/runcoms/zshenv ~/.zshenv
+ln -s $PWD/zshenv ~/.zshenv
 ln -s $PWD/zshrc ~/.zshrc
 ln -s $PWD/zpreztorc ~/.zpreztorc
 ln -s ~/.zprezto/runcoms/zlogin ~/.zlogin
