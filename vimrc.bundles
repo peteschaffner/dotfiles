@@ -33,7 +33,6 @@
         Bundle 'YankRing.vim'
         Bundle 'myusuf3/numbers.vim'
         Bundle 'nathanaelkane/vim-indent-guides'
-        Bundle 'ervandew/supertab'
     " }
 
     " General Programming {
@@ -42,6 +41,7 @@
         Bundle 'gregsexton/gitv'
         Bundle 'scrooloose/nerdcommenter'
         Bundle 'godlygeek/tabular'
+        Bundle 'ervandew/supertab'
         Bundle 'majutsushi/tagbar'
         Bundle 'Raimondi/delimitMate'
     " }
@@ -54,8 +54,11 @@
     " JavaScript {
         Bundle 'leshill/vim-json'
         Bundle 'pangloss/vim-javascript'
-        Bundle 'kchmck/vim-coffee-script'
+        Bundle 'briancollins/vim-jst'
         Bundle 'digitaltoad/vim-jade'
+        Bundle 'kchmck/vim-coffee-script'
+        Bundle 'AndrewRadev/vim-eco'
+        Bundle 'myhere/vim-nodejs-complete'
     " }
 
     " HTML {
@@ -66,12 +69,11 @@
     " CSS {
         Bundle 'hail2u/vim-css3-syntax'
         Bundle 'wavded/vim-stylus'
-        Bundle 'groenewege/vim-less'
         Bundle 'cakebaker/scss-syntax.vim'
     " }
 
     " Ruby {
-        Bundle 'tpope/vim-rails'
+        "Bundle 'tpope/vim-rails'
     " }
 
     " Misc {

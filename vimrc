@@ -46,10 +46,9 @@
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
     autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
     " I prefer the Omni-Completion tip window to close when a selection is made
-    autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-    autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+    au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
-    " Turn off swap files and
+    " Turn off swap files and backups
     set noswapfile
     set nobackup
     set nowb
@@ -105,6 +104,8 @@
     set foldmethod=indent           " fold based on indent
     set list
     set listchars=tab:\ \ ,trail:·,nbsp:. " Highlight problematic whitespace
+    set ruler                       " show the ruler
+    set rulerformat=%30(%=%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
 " }
 
 " Formatting {
