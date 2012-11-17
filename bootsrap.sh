@@ -10,11 +10,17 @@ curl -fsSkL raw.github.com/mxcl/homebrew/go | ruby
 brew doctor
 
 echo ""
-echo "Installing ack, ctags, git, git-extras, hub, node, rbenv, ruby-build & zsh"
+echo "Installing ack, ctags, git, git-extras, hub, node, rbenv, ruby-build, zsh, fasd & python"
 
 brew update
-brew install ack ctags git git-extras hub rbenv ruby-build node zsh fasd
+brew install ack ctags git git-extras hub rbenv ruby-build node zsh fasd python
 
+# install required python libraries
+easy_install pygments
+mv /usr/local/share/python/pygmentize /usr/local/bin/
+git clone https://github.com/gthank/solarized-dark-pygments.git $PWD/temp
+cp $PWD/temp/solarized.py /usr/local/lib/python2.7/site-packages/pygments/styles/
+rm -rf $PWD/temp
 
 echo ""
 echo "----------------------"
