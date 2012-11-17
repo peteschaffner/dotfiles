@@ -69,11 +69,13 @@
         set cursorline                  " highlight current line
 
         " make line numbers beautiful
-        highlight LineNr guibg=#fdf6e3
-        highlight LineNr guifg=#eee8d5
+        hi LineNr guibg=#fdf6e3
+        hi LineNr guifg=#eee8d5
         hi CursorLineNr guifg=#93a1a1
+        " column color for syntactic errors/warnings
+        hi SignColumn guibg=#fdf6e3
 
-        set guifont=Inconsolata:h16     " set font/font-size
+        set guifont=Inconsolata:h18     " set font/font-size
 
         " Disable the scrollbars
         set guioptions-=r
@@ -105,7 +107,7 @@
     set list
     set listchars=tab:\ \ ,trail:·,nbsp:. " Highlight problematic whitespace
     set ruler                       " show the ruler
-    set rulerformat=%30(%=%y%m%r%w\ %l,%c%V\ %P%) " a ruler on steroids
+    set rulerformat=%30(%=%l,%c%V\ %y%m%r%w\ %P%) " a ruler on steroids
 " }
 
 " Formatting {
@@ -176,6 +178,9 @@
 
     " Toggle line wrapping
     map <Leader>w :Wrap<CR>
+
+    " Format JSON
+    nmap <leader>jt <Esc>:%!python -m json.tool<CR>
 " }
 
 " Bundle settings {
@@ -292,12 +297,8 @@
 
       " snipmate {
           let g:snipMate = {}
-          let g:snipMate.scope_aliases = {} 
+          let g:snipMate.scope_aliases = {}
           let g:snipMate.scope_aliases['liquid'] = 'html,liquid'
-      " }
-
-      " numbers {
-          nmap <Leader>n :NumbersToggle<CR>
       " }
 " }
 
@@ -328,19 +329,45 @@
     function! ToggleSolarizedTheme()
       if (&background == 'dark')
         set background=light
-        highlight LineNr guibg=#fdf6e3
-        highlight LineNr guifg=#eee8d5
+        hi LineNr guibg=#fdf6e3
+        hi LineNr guifg=#eee8d5
         hi CursorLineNr guifg=#93a1a1
+        hi SignColumn guibg=#fdf6e3
         let g:Powerline_colorscheme='solarized'
         :PowerlineReloadColorscheme
       else
         set background=dark
-        highlight LineNr guibg=#002b36
-        highlight LineNr guifg=#073642
+        hi LineNr guibg=#002b36
+        hi LineNr guifg=#073642
         hi CursorLineNr guifg=#586e75
+        hi SignColumn guibg=#002b36
         let g:Powerline_colorscheme='solarized256'
         :PowerlineReloadColorscheme
       endif
     endfunction
     command! ToggleSolarized :call ToggleSolarizedTheme()
+
+    " Z - cd to recent / frequent directories
+    command! -nargs=* Z :call Z(<f-args>)
+    function! Z(...)
+      let cmd = 'fasd -d -e printf'
+      for arg in a:000
+        let cmd = cmd . ' ' . arg
+      endfor
+      let path = system(cmd)
+      if isdirectory(path)
+        echo path
+        exec 'cd ' . path
+      endif
+    endfunction
+    nmap <Leader>z :Z 
+
+    function! NumberToggle()
+    if(&relativenumber == 1)
+      set number
+    else
+      set relativenumber
+    endif
+  endfunc
+  nnoremap <silent> <Leader>n :call NumberToggle()<cr>
 " }
