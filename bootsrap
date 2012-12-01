@@ -10,14 +10,14 @@ curl -fsSkL raw.github.com/mxcl/homebrew/go | ruby
 brew doctor
 
 echo ""
-echo "Installing ack, ctags, git, git-extras, hub, node, rbenv, ruby-build, zsh, fasd & python"
+echo "Installing packages..."
 
 brew update
-brew install ack ctags git git-extras hub rbenv ruby-build node zsh fasd python
+brew install ack ctags git git-extras hub rbenv ruby-build node zsh fasd python rename
 
 # install required python libraries
 easy_install pygments
-mv /usr/local/share/python/pygmentize /usr/local/bin/
+ln -s /usr/local/share/python/pygmentize /usr/local/bin/
 git clone https://github.com/gthank/solarized-dark-pygments.git $PWD/temp
 cp $PWD/temp/solarized.py /usr/local/lib/python2.7/site-packages/pygments/styles/
 rm -rf $PWD/temp
@@ -41,7 +41,6 @@ ln -s $PWD/zshrc ~/.zshrc
 ln -s $PWD/zpreztorc ~/.zpreztorc
 ln -s ~/.zprezto/runcoms/zlogin ~/.zlogin
 ln -s ~/.zprezto/runcoms/zlogout ~/.zlogout
-ln -s $PWD/powconfig ~/.powconfig
 
 echo ""
 echo "Set Zsh as your default shell..."
@@ -66,6 +65,7 @@ ln -s $PWD/vim ~/.vim
 
 echo ""
 echo "Installing plugins..."
+git clone https://github.com/gmarik/vundle.git $PWD/vim/bundle/vundle
 vim -u ~/.dotfiles/vimrc.bundles +BundleInstall! +BundleClean +qall
 
 echo ""

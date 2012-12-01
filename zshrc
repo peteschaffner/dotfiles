@@ -19,8 +19,8 @@ fi
 
 ### Aliases ###
 # commandline task list
-alias t='python ~/.dotfiles/t.py --task-dir ~/Dropbox --list tasks'
-alias b='python ~/.dotfiles/t.py --task-dir ~/Dropbox --list bugs'
+alias t='python ~/.dotfiles/bin/t.py --task-dir ~/Dropbox --list tasks'
+alias b='python ~/.dotfiles/bin/t.py --task-dir ~/Dropbox --list bugs'
 
 # rsync
 alias rsx="rsync-synchronize --exclude-from '${ZDOTDIR:-$HOME}/.rsyncignore'"
@@ -47,3 +47,10 @@ alias v="mvim"
 # hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+### Functions ###
+# Start an HTTP server from a directory, optionally specifying the port
+function server() {
+  local port="${1:-8000}"
+  open "http://localhost:${port}/" && python -m SimpleHTTPServer "$port"
+}

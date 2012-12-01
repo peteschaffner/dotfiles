@@ -37,11 +37,10 @@
     " General Programming {
         Bundle 'scrooloose/syntastic'
         Bundle 'tpope/vim-fugitive'
-        Bundle 'gregsexton/gitv'
         Bundle 'scrooloose/nerdcommenter'
         Bundle 'godlygeek/tabular'
         Bundle 'ervandew/supertab'
-        Bundle 'majutsushi/tagbar'
+        "Bundle 'majutsushi/tagbar'
         Bundle 'Raimondi/delimitMate'
     " }
 

@@ -147,7 +147,7 @@
     nmap U <c-r>
 
     " Move focus to the file browser
-    nmap <D-N> :maca openFileBrowser:<CR>
+    nmap <silent> <D-N> :maca openFileBrowser:<CR>
 
     " Open terminal here
     nmap <silent> <D-O> :!open -a Terminal .<CR><CR>
@@ -192,6 +192,7 @@
     " ctrlP {
         let g:ctrlp_working_path_mode = 'rw'
         let g:ctrlp_custom_ignore = '\.git$'
+        let g:ctrlp_custom_ignore = 'Build$'
         let g:ctrlp_by_filename = 1
 
         let g:ctrlp_map = ',t'
@@ -261,7 +262,7 @@
     " }
 
     " ruby {
-        let g:rubycomplete_buffer_loading = 1
+        "let g:rubycomplete_buffer_loading = 1
         "let g:rubycomplete_classes_in_global = 1
         "let g:rubycomplete_rails = 1
     " }
@@ -284,7 +285,7 @@
       " supertab {
           let g:SuperTabCrMapping = 0
           let g:SuperTabDefaultCompletionType = 'context'
-          "let g:SuperTabContextDefaultCompletionType = '<c-x><c-u>'
+          let g:SuperTabContextDefaultCompletionType = '<c-x><c-u>'
           autocmd FileType *
               \ if &omnifunc != '' |
               \     call SuperTabChain(&omnifunc, '<c-p>') |
@@ -362,7 +363,8 @@
     endfunction
     nmap <Leader>z :Z 
 
-    function! NumberToggle()
+  " Toggle relative line numbers
+  function! NumberToggle()
     if(&relativenumber == 1)
       set number
     else
