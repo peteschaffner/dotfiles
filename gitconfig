@@ -16,6 +16,7 @@
 [merge]
   summary = true
   verbosity = 1
+  tool = Kaleidoscope
 [apply]
   whitespace = nowarn
 [branch]
@@ -29,6 +30,7 @@
   editor = vim
   excludesfile = ~/.gitignore
   pager = less -r
+  quotepath = false
 [advice]
   statusHints = true
 [diff]
@@ -41,6 +43,15 @@
   # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
   enabled = true
 [difftool "Kaleidoscope"]
-  cmd = ksdiff-wrapper git \"$LOCAL\" \"$REMOTE\"
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [difftool]
   prompt = false
+[mergetool "Kaleidoscope"]
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+[mergetool]
+  prompt = false
+[user]
+  name = Pete Schaffner
+  email = pjschaffner@gmail.com
+[alias]
+  ksreview = "!sh -c 'SHA=${1:-HEAD}; BRANCH=${2:-master}; if [ $SHA == $BRANCH ] ; then SHA=HEAD; fi; git difftool -y -t Kaleidoscope $BRANCH../..$SHA;' -"
