@@ -28,8 +28,6 @@
     set mouse=a                     " automatically enable mouse usage
     scriptencoding utf-8
 
-    set background=light
-
     set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
     set shortmess+=I                " remove splash screen
     set history=1000                " Store a ton of history (default is 20)
@@ -59,9 +57,22 @@
 " }
 
 " Vim UI {
-    " Make it beautiful - colors, fonts & gui
+    set background=dark
+    colorscheme solarized
+
+    " Highlighted text is unreadable in Terminal.app because it
+    " does not support setting of the cursor foreground color.
+    if !has('gui_running') && $TERM_PROGRAM == 'Apple_Terminal'
+         if &background == 'dark'
+           " For some reason setting ctermbg to 0 doesn't work...
+           " have to set it to some value that no color is assigned for???
+            hi Visual term=reverse cterm=reverse ctermfg=10 ctermbg=2000
+        endif
+    endif
+
+    " Graphical interface
     if has("gui_running")
-        color solarized                 " set colorscheme
+        set background=light
 
         " line to show 80 character mark
         set colorcolumn=81
