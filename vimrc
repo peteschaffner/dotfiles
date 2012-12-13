@@ -184,12 +184,6 @@
     " Encode HTML entities
     nmap <silent> <leader>he :%!perl -p -i -e 'BEGIN { use HTML::Entities; use Encode; } $_=Encode::decode_utf8($_) unless Encode::is_utf8($_); $_=Encode::encode("ascii", $_, sub{HTML::Entities::encode_entities(chr shift)});'<cr>
 
-    " Toggle Solarized theme
-    nmap <leader>s :ToggleSolarized<cr>
-
-    " Toggle line wrapping
-    map <Leader>w :Wrap<CR>
-
     " Format JSON
     nmap <leader>jt <Esc>:%!python -m json.tool<CR>
 " }
@@ -274,13 +268,14 @@
     " }
 
       " powerline {
-          "let g:Powerline_symbols = 'fancy'
+          let g:Powerline_colorscheme='solarized16'
           let g:Powerline_theme='solarized256'
-          let g:Powerline_colorscheme='solarized'
-          " so our colorscheme is always fresh
-          "if has("gui_running")
-              "autocmd VimEnter * PowerlineReloadColorscheme
-          "endif
+          if has("gui_running")
+            let g:Powerline_colorscheme='solarized256'
+            "let g:Powerline_symbols = 'fancy'
+            " so our colorscheme is always fresh
+            "autocmd VimEnter * PowerlineReloadColorscheme
+          endif
       " }
 
       " yankring {
@@ -359,6 +354,7 @@
       endif
     endfunction
     command! ToggleSolarized :call ToggleSolarizedTheme()
+    nmap <leader>s :ToggleSolarized<cr>
 
     " Z - cd to recent / frequent directories
     command! -nargs=* Z :call Z(<f-args>)
