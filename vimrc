@@ -18,7 +18,7 @@
 
     " Fixes {
         " fix for Shopify liquid templates loosing HTML highlighting
-        autocmd BufNewFile,BufReadPost page.*.liquid let b:liquid_subtype = 'html'
+        "autocmd BufNewFile,BufReadPost page.*.liquid let b:liquid_subtype = 'html'
     " }
 " }
 
@@ -222,11 +222,6 @@
         let delimitMate_expand_space = 1
     " }
 
-    " gundo {
-        nnoremap <silent> <leader>u :GundoToggle<CR>
-        let g:gundo_right = 1
-    " }
-
     " surround {
         " ,# Surround a word with #{ruby interpolation}
         map <leader># ysiw#
@@ -333,9 +328,15 @@
     " Wrapping function
     function! SetupWrapping()
         set wrap! linebreak! nolist!
+        if (&wrap)
+          set colorcolumn=
+        else
+          set colorcolumn=81
+        endif
         let &showbreak='  '
     endfunction
     command! Wrap :call SetupWrapping()
+    map <Leader>wl :Wrap<CR>
 
     " Toggle Solarized theme
     function! ToggleSolarizedTheme()
@@ -383,4 +384,28 @@
     endif
   endfunc
   nnoremap <silent> <Leader>n :call NumberToggle()<cr>
+
+  " Open URL
+ruby << EOF
+  def open_url
+    re = %r{(?i)\b((?:[a-z][\w-]+:(?:/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\))+(?:\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))}
+
+    line = VIM::Buffer.current.line
+    urls = line.scan(re).flatten
+
+    if urls.empty?
+      VIM::message("No URL found in line.")
+    else
+      system("open", *urls)
+      VIM::message(urls.join(" and "))
+    end
+  end
+EOF
+
+  function! s:OpenURL()
+    ruby open_url
+  endfunction
+
+  command! OpenURL call <SID>OpenURL()
+  map <leader>u :OpenURL<CR>
 " }

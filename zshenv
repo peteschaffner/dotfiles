@@ -76,7 +76,7 @@ unset path_file
 
 # Set the list of directories that Zsh searches for programs.
 path=(
-  /usr/local/{bin,sbin,share/npm/bin}
+  /usr/local/{bin,sbin,share/npm/bin,share/python}
   /usr/{bin,sbin}
   /{bin,sbin}
   $path

@@ -29,7 +29,6 @@
         Bundle 'matchit.zip'
         Bundle 'Lokaltog/vim-powerline'
         Bundle 'Lokaltog/vim-easymotion'
-        Bundle 'sjl/gundo.vim'
         Bundle 'YankRing.vim'
         Bundle 'nathanaelkane/vim-indent-guides'
     " }
@@ -40,7 +39,6 @@
         Bundle 'scrooloose/nerdcommenter'
         Bundle 'godlygeek/tabular'
         Bundle 'ervandew/supertab'
-        "Bundle 'majutsushi/tagbar'
         Bundle 'Raimondi/delimitMate'
     " }
 
@@ -69,12 +67,7 @@
         Bundle 'cakebaker/scss-syntax.vim'
     " }
 
-    " Ruby {
-        "Bundle 'tpope/vim-rails'
-    " }
-
     " Misc {
         Bundle 'tpope/vim-markdown'
-        Bundle 'tpope/vim-liquid'
     " }
 " }
