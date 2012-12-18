@@ -305,83 +305,83 @@
 " }
 
 " Functions {
-    " Strip trailing whitespace
-    function! <SID>StripTrailingWhitespaces()
-        " Preparation: save last search, and cursor position.
-        let _s=@/
-        let l = line(".")
-        let c = col(".")
-        " Do the business:
-        %s/\s\+$//e
-        " Clean up: restore previous search history, and cursor position
-        let @/=_s
-        call cursor(l, c)
-    endfunction
-    command! StripTrailingWhitespaces call <SID>StripTrailingWhitespaces()
-    nmap ,ws :StripTrailingWhitespaces<CR>
+" Strip trailing whitespace
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+command! StripTrailingWhitespaces call <SID>StripTrailingWhitespaces()
+nmap ,ws :StripTrailingWhitespaces<CR>
 
-    " Wrapping function
-    function! SetupWrapping()
-        set wrap! linebreak! nolist!
-        if (&wrap)
-          set colorcolumn=
-        else
-          set colorcolumn=81
-        endif
-        let &showbreak='  '
-    endfunction
-    command! Wrap :call SetupWrapping()
-    map <Leader>wl :Wrap<CR>
-
-    " Toggle Solarized theme
-    function! ToggleSolarizedTheme()
-      if (&background == 'dark')
-        set background=light
-        hi LineNr guibg=#fdf6e3
-        hi LineNr guifg=#eee8d5
-        hi CursorLineNr guifg=#93a1a1
-        hi SignColumn guibg=#fdf6e3
-        let g:Powerline_colorscheme='solarized'
-        :PowerlineReloadColorscheme
-      else
-        set background=dark
-        hi LineNr guibg=#002b36
-        hi LineNr guifg=#073642
-        hi CursorLineNr guifg=#586e75
-        hi SignColumn guibg=#002b36
-        let g:Powerline_colorscheme='solarized256'
-        :PowerlineReloadColorscheme
-      endif
-    endfunction
-    command! ToggleSolarized :call ToggleSolarizedTheme()
-    nmap <leader>s :ToggleSolarized<cr>
-
-    " Z - cd to recent / frequent directories
-    command! -nargs=* Z :call Z(<f-args>)
-    function! Z(...)
-      let cmd = 'fasd -d -e printf'
-      for arg in a:000
-        let cmd = cmd . ' ' . arg
-      endfor
-      let path = system(cmd)
-      if isdirectory(path)
-        echo path
-        exec 'cd ' . path
-      endif
-    endfunction
-    nmap <Leader>z :Z 
-
-  " Toggle relative line numbers
-  function! NumberToggle()
-    if(&relativenumber == 1)
-      set number
+" Wrapping function
+function! SetupWrapping()
+    set wrap! linebreak! nolist!
+    if (&wrap)
+      set colorcolumn=
     else
-      set relativenumber
+      set colorcolumn=81
     endif
-  endfunc
-  nnoremap <silent> <Leader>n :call NumberToggle()<cr>
+    let &showbreak='  '
+endfunction
+command! Wrap :call SetupWrapping()
+map <Leader>wl :Wrap<CR>
 
-  " Open URL
+" Toggle Solarized theme
+function! ToggleSolarizedTheme()
+  if (&background == 'dark')
+    set background=light
+    hi LineNr guibg=#fdf6e3
+    hi LineNr guifg=#eee8d5
+    hi CursorLineNr guifg=#93a1a1
+    hi SignColumn guibg=#fdf6e3
+    let g:Powerline_colorscheme='solarized'
+    :PowerlineReloadColorscheme
+  else
+    set background=dark
+    hi LineNr guibg=#002b36
+    hi LineNr guifg=#073642
+    hi CursorLineNr guifg=#586e75
+    hi SignColumn guibg=#002b36
+    let g:Powerline_colorscheme='solarized256'
+    :PowerlineReloadColorscheme
+  endif
+endfunction
+command! ToggleSolarized :call ToggleSolarizedTheme()
+nmap <leader>s :ToggleSolarized<cr>
+
+" Z - cd to recent / frequent directories
+command! -nargs=* Z :call Z(<f-args>)
+function! Z(...)
+  let cmd = 'fasd -d -e printf'
+  for arg in a:000
+    let cmd = cmd . ' ' . arg
+  endfor
+  let path = system(cmd)
+  if isdirectory(path)
+    echo path
+    exec 'cd ' . path
+  endif
+endfunction
+nmap <Leader>z :Z 
+
+" Toggle relative line numbers
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+  else
+    set relativenumber
+  endif
+endfunc
+nnoremap <silent> <Leader>n :call NumberToggle()<cr>
+
+" Open URL
 ruby << EOF
   def open_url
     re = %r{(?i)\b((?:[a-z][\w-]+:(?:/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\))+(?:\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))}
@@ -398,10 +398,18 @@ ruby << EOF
   end
 EOF
 
-  function! s:OpenURL()
-    ruby open_url
-  endfunction
+function! s:OpenURL()
+  ruby open_url
+endfunction
 
-  command! OpenURL call <SID>OpenURL()
-  map <leader>u :OpenURL<CR>
+command! OpenURL call <SID>OpenURL()
+map <leader>u :OpenURL<CR>
+
+" Open file in Chrome
+function! OpenInChrome()
+  let filePath = escape(expand("%:p"), ' ')
+  exec '!open -a Google\ Chrome ' . filePath
+endfunction
+
+command! Chrome :call OpenInChrome()
 " }
