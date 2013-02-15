@@ -43,8 +43,6 @@
     autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
     autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-    " I prefer the Omni-Completion tip window to close when a selection is made
-    au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
 
     " Turn off swap files and backups
     set noswapfile
@@ -107,8 +105,6 @@
     set winminheight=0              " windows can be 0 line high
     set ignorecase                  " case insensitive search
     set smartcase                   " case sensitive when uc present
-    set wildmenu                    " show list instead of just completing
-    set wildmode=list:longest,full  " command <Tab> completion, list matches, then longest common part, then all.
     set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
     set scrolloff=8                 " start scrolling when we're 8 lines away from margins
     set sidescrolloff=15
@@ -283,16 +279,6 @@
           nnoremap ,y :YRShow<CR>
       " }
 
-      " supertab {
-          let g:SuperTabCrMapping = 0
-          let g:SuperTabDefaultCompletionType = 'context'
-          let g:SuperTabContextDefaultCompletionType = '<c-x><c-u>'
-          autocmd FileType *
-              \ if &omnifunc != '' |
-              \     call SuperTabChain(&omnifunc, '<c-p>') |
-              \ endif
-      " }
-
       " fugitive {
           noremap <silent> <leader>gs :Gstatus<cr>
       " }
@@ -301,6 +287,11 @@
           let g:snipMate = {}
           let g:snipMate.scope_aliases = {}
           let g:snipMate.scope_aliases['liquid'] = 'html,liquid'
+      " }
+
+      " YouCompleteMe {
+          let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+          let g:ycm_filetypes_to_completely_ignore = {'notes': 1}
       " }
 " }
 

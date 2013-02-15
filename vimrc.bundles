@@ -38,7 +38,8 @@
         Bundle 'tpope/vim-fugitive'
         Bundle 'scrooloose/nerdcommenter'
         Bundle 'godlygeek/tabular'
-        Bundle 'ervandew/supertab'
+        "Bundle 'ervandew/supertab'
+        Bundle 'Valloric/YouCompleteMe'
         Bundle 'Raimondi/delimitMate'
     " }
 
@@ -59,6 +60,7 @@
     " HTML {
         Bundle 'othree/html5.vim'
         Bundle 'mattn/zencoding-vim'
+        Bundle 'Valloric/MatchTagAlways'
     " }
 
     " CSS {
