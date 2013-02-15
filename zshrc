@@ -12,16 +12,7 @@ fi
 
 # Customize to your needs...
 
-### Put secret configuration settings in ~/.secrets ###
-if [[ -a ~/.secrets ]] then
-  source ~/.secrets
-fi
-
 ### Aliases ###
-# commandline task list
-alias t='python ~/.dotfiles/bin/t.py --task-dir ~/Dropbox --list tasks'
-alias b='python ~/.dotfiles/bin/t.py --task-dir ~/Dropbox --list bugs'
-
 # rsync
 alias rsx="rsync-synchronize --exclude-from '${ZDOTDIR:-$HOME}/.rsyncignore'"
 
