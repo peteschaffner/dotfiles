@@ -20,9 +20,6 @@ alias rsx="rsync-synchronize --exclude-from '${ZDOTDIR:-$HOME}/.rsyncignore'"
 eval "$(hub alias -s)"
 alias gdt='git difftool'
 
-# `cat` with beautiful colors
-alias c='pygmentize -O style=solarized -f console256 -g'
-
 # z, but with fasd
 alias z='j'
 
