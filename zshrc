@@ -12,6 +12,9 @@ fi
 
 # Customize to your needs...
 
+### Env variables ###
+export GIT_EDITOR=/usr/local/bin/vim
+
 ### Aliases ###
 # rsync
 alias rsx="rsync-synchronize --exclude-from '${ZDOTDIR:-$HOME}/.rsyncignore'"
@@ -29,8 +32,8 @@ alias trimcopy="tr -d '\n' | pbcopy"
 # recursively delete `.DS_Store` files
 alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
 
-# mvim
-alias v="mvim"
+# vim
+alias v="vim"
 
 # hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"

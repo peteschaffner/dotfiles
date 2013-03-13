@@ -27,7 +27,6 @@
   default = tracking
 [core]
   autocrlf = false
-  editor = vim
   excludesfile = ~/.gitignore
   pager = less -r
   quotepath = false
