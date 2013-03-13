@@ -3,7 +3,7 @@
 " Environment {
     " Basics {
         set nocompatible        " must be first line
-        " one mac use * register for copy-paste
+        " on mac use * register for copy-paste
         "set clipboard=unnamed
     " }
 
@@ -14,11 +14,6 @@
         call vundle#rc()
         " Source our bundle list
         source ~/.dotfiles/vimrc.bundles
-    " }
-
-    " Fixes {
-        " fix for Shopify liquid templates loosing HTML highlighting
-        "autocmd BufNewFile,BufReadPost page.*.liquid let b:liquid_subtype = 'html'
     " }
 " }
 
@@ -57,6 +52,7 @@
 " Vim UI {
     set background=dark
     colorscheme solarized
+    set t_Co=256
 
     " Highlighted text is unreadable in Terminal.app because it
     " does not support setting of the cursor foreground color.
@@ -67,35 +63,63 @@
             hi Visual term=reverse cterm=reverse ctermfg=10 ctermbg=2000
         endif
     endif
+    "
+    " line to show 80 character mark
+    set colorcolumn=81
+
+    " make line numbers beautiful
+    hi LineNr ctermbg=NONE
+    hi LineNr ctermfg=black
+
+    " make vert splits beautiful
+    hi VertSplit ctermbg=NONE
+    hi VertSplit ctermfg=black
+
+    " column color for syntactic errors/warnings
+    hi SignColumn ctermbg=NONE
 
     " Graphical interface
     if has("gui_running")
         set background=light
 
-        " line to show 80 character mark
-        set colorcolumn=81
-        set columns=84
+        "set columns=84
         set cursorline                  " highlight current line
 
         " make line numbers beautiful
-        hi LineNr guibg=#fdf6e3
+        hi LineNr guibg=NONE
         hi LineNr guifg=#eee8d5
-        hi CursorLineNr guifg=#93a1a1
-        " column color for syntactic errors/warnings
-        hi SignColumn guibg=#fdf6e3
 
-        set guifont=Inconsolata:h18     " set font/font-size
+        " make vert splits beautiful
+        hi VertSplit guibg=NONE
+        hi VertSplit guifg=#eee8d5
+
+        " Line highlight color
+        hi CursorLineNr guifg=#93a1a1
+
+        " column color for syntactic errors/warnings
+        hi SignColumn guibg=NONE
+
+        " hot pink for searching is so hawt
+        hi Search guifg=#FF5E99
+        hi IncSearch guifg=#ff8ab5
+
+        " pretty spelling error
+        hi SpellBad gui=underline
+        hi SpellCap gui=underline
+        hi SpellRare gui=underline
+        hi SpellLocal gui=underline
+
+        set guifont=Inconsolata:h16     " set font/font-size
 
         " Disable the scrollbars
         set guioptions-=r
         set guioptions-=L
-
-        "set laststatus=2                " always show statusline
     endif
 
+    set laststatus=0                " always show statusline
     set showmode                    " display the current mode
     set backspace=indent,eol,start  " backspace for dummies
-    set linespace=0                 " No extra spaces between rows
+    set linespace=1                 " No extra spaces between rows
     set nu                          " Line numbers on
     set gcr=a:blinkon0              " Disable cursor blink
     set visualbell                  " No sounds
@@ -143,6 +167,9 @@
     nnoremap <silent> <C-k> <C-w>k
     nnoremap <silent> <C-j> <C-w>j
 
+    " Preserve indentation while pasting text from the OS X clipboard
+    imap <Leader>p  <C-O>:set paste<CR><C-r>*<C-O>:set nopaste<CR>
+
     "Clear current search highlight by double tapping //
     nmap <silent> // :nohlsearch<CR>
 
@@ -153,8 +180,19 @@
     " Remap 'U' to undo, for ease of use
     nmap U <c-r>
 
-    " Move focus to the file browser
-    nmap <silent> <D-N> :maca openFileBrowser:<CR>
+    " Convenience mappings for file and buffer commands
+    " Suspend buffer
+    map <leader>z <C-z>
+    " Save file
+    map <leader>s :w<CR>
+    " Quit
+    map <leader>q :q<CR>
+    " Delete buffer
+    map <leader>x :bd<CR>
+
+    " File browser remaps
+    nmap <silent> <D-\> :maca openFileBrowser:<CR>
+    nmap <silent> <D-]> :maca revealInFileBrowser:<CR>
 
     " Open terminal here
     nmap <silent> <D-O> :!open -a Terminal .<CR><CR>
@@ -185,11 +223,6 @@
 " }
 
 " Bundle settings {
-    " Ack {
-        " Shortcut for find in project (ack)
-        nmap <D-F> :Ack 
-    " }
-
     " ctrlP {
         let g:ctrlp_working_path_mode = 'rw'
         let g:ctrlp_custom_ignore = '\.git$'
@@ -201,10 +234,9 @@
 
         " Additional mapping for buffer search
         nnoremap <silent> <leader>b :CtrlPBuffer<CR>
-        nnoremap <silent> <C-b> :CtrlPBuffer<CR>
 
-        " Cmd-Shift-P to clear the cache
-        nnoremap <silent> <D-P> :ClearCtrlPCache<cr>
+        " Cmd-Shift-R to clear the cache, or 'R'eload ;)
+        nnoremap <silent> <leader>r :ClearCtrlPCache<cr>
     " }
 
     " delimitmate {
@@ -213,10 +245,6 @@
     " }
 
     " surround {
-        " ,# Surround a word with #{ruby interpolation}
-        map <leader># ysiw#
-        vmap <leader># c#{<C-R>"}<ESC>
-
         " ," Surround a word with "quotes"
         map <leader>" ysiw"
         vmap <leader>" c"<C-R>""<ESC>
@@ -247,7 +275,8 @@
 
     " nerdCommenter {
         " Command-/ to toggle comments
-        map <D-/> <plug>NERDCommenterToggle
+        map <leader>/ <plug>NERDCommenterToggle
+        nmap <D-/> <plug>NERDCommenterToggle
         imap <D-/> <plug>NERDCommenterInsert
     " }
 
@@ -257,42 +286,28 @@
         vmap <D-A> :Tabularize /
     " }
 
-    " ruby {
-        "let g:rubycomplete_buffer_loading = 1
-        "let g:rubycomplete_classes_in_global = 1
-        "let g:rubycomplete_rails = 1
+    " powerline {
+        "set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
     " }
 
-      " powerline {
-          let g:Powerline_colorscheme='solarized16'
-          let g:Powerline_theme='solarized256'
-          if has("gui_running")
-            let g:Powerline_colorscheme='solarized256'
-            "let g:Powerline_symbols = 'fancy'
-            " so our colorscheme is always fresh
-            "autocmd VimEnter * PowerlineReloadColorscheme
-          endif
-      " }
+    " yankring {
+        let g:yankring_history_file = '.yankring-history'
+        nnoremap <leader>y :YRShow<CR>
+    " }
 
-      " yankring {
-          let g:yankring_history_file = '.yankring-history'
-          nnoremap ,y :YRShow<CR>
-      " }
+    " fugitive {
+        noremap <silent> <leader>gs :Gstatus<cr>
+    " }
 
-      " fugitive {
-          noremap <silent> <leader>gs :Gstatus<cr>
-      " }
+    " YouCompleteMe {
+        let g:ycm_filetypes_to_completely_ignore = {'notes': 1}
+        let g:ycm_complete_in_comments_and_strings = 1
+    " }
 
-      " snipmate {
-          let g:snipMate = {}
-          let g:snipMate.scope_aliases = {}
-          let g:snipMate.scope_aliases['liquid'] = 'html,liquid'
-      " }
-
-      " YouCompleteMe {
-          let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-          let g:ycm_filetypes_to_completely_ignore = {'notes': 1}
-      " }
+    " Syntastic {
+        let g:syntastic_error_symbol='✗'
+        let g:syntastic_enable_highlighting = 1
+    " }
 " }
 
 " Functions {
@@ -328,24 +343,19 @@ map <Leader>wl :Wrap<CR>
 function! ToggleSolarizedTheme()
   if (&background == 'dark')
     set background=light
-    hi LineNr guibg=#fdf6e3
+    hi LineNr guibg=NONE
     hi LineNr guifg=#eee8d5
     hi CursorLineNr guifg=#93a1a1
-    hi SignColumn guibg=#fdf6e3
-    let g:Powerline_colorscheme='solarized'
-    :PowerlineReloadColorscheme
+    hi SignColumn guibg=NONE
   else
     set background=dark
-    hi LineNr guibg=#002b36
+    hi LineNr guibg=NONE
     hi LineNr guifg=#073642
     hi CursorLineNr guifg=#586e75
-    hi SignColumn guibg=#002b36
-    let g:Powerline_colorscheme='solarized256'
-    :PowerlineReloadColorscheme
+    hi SignColumn guibg=NONE
   endif
 endfunction
 command! ToggleSolarized :call ToggleSolarizedTheme()
-nmap <leader>s :ToggleSolarized<cr>
 
 " Z - cd to recent / frequent directories
 command! -nargs=* Z :call Z(<f-args>)
@@ -360,7 +370,6 @@ function! Z(...)
     exec 'cd ' . path
   endif
 endfunction
-nmap <Leader>z :Z 
 
 " Toggle relative line numbers
 function! NumberToggle()
