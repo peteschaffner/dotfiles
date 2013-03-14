@@ -40,13 +40,11 @@
         Bundle 'tpope/vim-fugitive'
         Bundle 'scrooloose/nerdcommenter'
         Bundle 'godlygeek/tabular'
-        Bundle 'Valloric/YouCompleteMe'
+        Bundle 'Shougo/neocomplcache'
         Bundle 'Raimondi/delimitMate'
     " }
 
     " Snippets {
-        Bundle 'garbas/vim-snipmate'
-        Bundle 'honza/snipmate-snippets'
     " }
 
     " JavaScript {
@@ -56,6 +54,8 @@
         Bundle 'digitaltoad/vim-jade'
         Bundle 'kchmck/vim-coffee-script'
         Bundle 'AndrewRadev/vim-eco'
+        Bundle 'teramako/jscomplete-vim'
+        Bundle 'myhere/vim-nodejs-complete'
     " }
 
     " HTML {
