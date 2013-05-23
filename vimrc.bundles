@@ -25,6 +25,7 @@
         Bundle 'chriskempson/vim-tomorrow-theme'
         Bundle 'altercation/vim-colors-solarized'
         Bundle 'tpope/vim-surround'
+        Bundle 'tpope/vim-repeat'
         Bundle 'tpope/vim-eunuch'
         Bundle 'kien/ctrlp.vim'
         Bundle 'matchit.zip'
@@ -33,6 +34,7 @@
         Bundle 'YankRing.vim'
         Bundle 'nathanaelkane/vim-indent-guides'
         Bundle 'scrooloose/nerdtree'
+        Bundle 'henrik/vim-open-url'
     " }
 
     " General Programming {
@@ -54,8 +56,7 @@
         Bundle 'digitaltoad/vim-jade'
         Bundle 'kchmck/vim-coffee-script'
         Bundle 'AndrewRadev/vim-eco'
-        Bundle 'teramako/jscomplete-vim'
-        Bundle 'myhere/vim-nodejs-complete'
+        Bundle 'marijnh/tern_for_vim'
     " }
 
     " HTML {
@@ -68,6 +69,8 @@
         Bundle 'hail2u/vim-css3-syntax'
         Bundle 'wavded/vim-stylus'
         Bundle 'cakebaker/scss-syntax.vim'
+        Bundle 'groenewege/vim-less'
+        Bundle 'skammer/vim-css-color'
     " }
 
     " Misc {

@@ -73,7 +73,7 @@
     if has("gui_running")
         set background=light
 
-        "set columns=84
+        set columns=84
         set cursorline                  " highlight current line
 
         " make line numbers beautiful
@@ -94,13 +94,16 @@
         hi Search guifg=#FF5E99
         hi IncSearch guifg=#ff8ab5
 
+        " sexy matching brackets
+        hi MatchParen gui=NONE guibg=#93a1a1 guifg=#eee8d5
+
         " pretty spelling error
         hi SpellBad gui=underline
         hi SpellCap gui=underline
         hi SpellRare gui=underline
         hi SpellLocal gui=underline
 
-        set guifont=Inconsolata:h16     " set font/font-size
+        set guifont=Inconsolata:h15     " set font/font-size
 
         " Disable the scrollbars
         set guioptions-=r
@@ -117,7 +120,6 @@
     set showmatch                   " show matching brackets/parenthesis
     set incsearch                   " find as you type search
     set hlsearch                    " highlight search terms
-    set winminheight=0              " windows can be 0 line high
     set ignorecase                  " case insensitive search
     set smartcase                   " case sensitive when uc present
     set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
@@ -159,7 +161,7 @@
     nnoremap <silent> <C-j> <C-w>j
 
     " Preserve indentation while pasting text from the OS X clipboard
-    imap <Leader>p  <C-O>:set paste<CR><C-r>*<C-O>:set nopaste<CR>
+    "imap <Leader>p  <C-O>:set paste<CR><C-r>*<C-O>:set nopaste<CR>
 
     "Clear current search highlight by double tapping //
     nmap <silent> // :nohlsearch<CR>
@@ -314,7 +316,7 @@
         " Enable omni completion.
         autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
         autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-        autocmd FileType javascript setlocal omnifunc=nodejscomplete#CompleteJS
+        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
         autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
         autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
         autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
@@ -339,18 +341,7 @@
     " }
 
     " Zen coding {
-        "let g:user_zen_expandabbr_key = '<tab>'
-    " }
-
-    " jscomplete {
-        let g:jscomplete_use = ['dom', 'es6th']
-    " }
-    "
-    " nodejs {
-        let g:nodejs_complete_config = {
-        \  'js_compl_fn': 'jscomplete#CompleteJS',
-        \  'max_node_compl_len': 5
-        \}
+        let g:user_zen_leader_key = '<c-e>'
     " }
 " }
 
@@ -424,30 +415,6 @@ function! NumberToggle()
   endif
 endfunc
 nnoremap <silent> <Leader>n :call NumberToggle()<cr>
-
-" Open URL
-ruby << EOF
-  def open_url
-    re = %r{(?i)\b((?:[a-z][\w-]+:(?:/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}/)(?:[^\s()<>]+|\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\))+(?:\((?:[^\s()<>]+|(?:\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))}
-
-    line = VIM::Buffer.current.line
-    urls = line.scan(re).flatten
-
-    if urls.empty?
-      VIM::message("No URL found in line.")
-    else
-      system("open", *urls)
-      VIM::message(urls.join(" and "))
-    end
-  end
-EOF
-
-function! s:OpenURL()
-  ruby open_url
-endfunction
-
-command! OpenURL call <SID>OpenURL()
-map <leader>u :OpenURL<CR>
 
 " Open file in Chrome
 function! OpenInChrome()
