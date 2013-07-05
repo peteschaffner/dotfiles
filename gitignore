@@ -24,3 +24,6 @@ tasks
 .tasks.done
 bugs
 .bugs.done
+
+# Tern
+.tern-port

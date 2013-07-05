@@ -69,12 +69,14 @@
     " column color for syntactic errors/warnings
     hi SignColumn ctermbg=NONE
 
+    " highlight current line
+    set cursorline
+
     " Graphical interface
     if has("gui_running")
         set background=light
 
         set columns=84
-        set cursorline                  " highlight current line
 
         " make line numbers beautiful
         hi LineNr guibg=NONE
@@ -110,8 +112,8 @@
         set guioptions-=L
     endif
 
-    set laststatus=0                " always show statusline
-    set showmode                    " display the current mode
+    set laststatus=2                " always show statusline
+    set noshowmode                    " display the current mode
     set backspace=indent,eol,start  " backspace for dummies
     set linespace=1                 " No extra spaces between rows
     set nu                          " Line numbers on
@@ -161,7 +163,13 @@
     nnoremap <silent> <C-j> <C-w>j
 
     " Preserve indentation while pasting text from the OS X clipboard
-    "imap <Leader>p  <C-O>:set paste<CR><C-r>*<C-O>:set nopaste<CR>
+    imap <Leader>p  <C-O>:set paste<CR><C-r>+<C-O>:set nopaste<CR>
+    nmap <Leader>p  "+p
+    vmap <Leader>p  "+p
+
+    " Yank to the clipboard
+    vmap <Leader>y  "+y
+    nmap <Leader>yy  "+yy
 
     "Clear current search highlight by double tapping //
     nmap <silent> // :nohlsearch<CR>
@@ -228,7 +236,7 @@
         " Additional mapping for buffer search
         nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 
-        " Cmd-Shift-R to clear the cache, or 'R'eload ;)
+        " Clear the cache, or 'R'eload ;)
         nnoremap <silent> <leader>r :ClearCtrlPCache<cr>
     " }
 
@@ -272,6 +280,10 @@
         nmap <D-/> <plug>NERDCommenterToggle
         imap <D-/> <plug>NERDCommenterInsert
     " }
+    "
+    " NERDTree {
+        nmap <silent> <leader>f :NERDTreeToggle<CR>
+    " }
 
     " tabular {
         " Hit Cmd-Shift-A then type a character you want to align by
@@ -280,12 +292,12 @@
     " }
 
     " powerline {
-        "set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+        set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
     " }
 
     " yankring {
         let g:yankring_history_file = '.yankring-history'
-        nnoremap <leader>y :YRShow<CR>
+        nnoremap <leader>Y :YRShow<CR>
     " }
 
     " fugitive {

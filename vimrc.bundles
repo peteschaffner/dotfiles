@@ -22,7 +22,6 @@
     " }
 
     " General {
-        Bundle 'chriskempson/vim-tomorrow-theme'
         Bundle 'altercation/vim-colors-solarized'
         Bundle 'tpope/vim-surround'
         Bundle 'tpope/vim-repeat'
@@ -47,6 +46,8 @@
     " }
 
     " Snippets {
+        Bundle 'rizzatti/funcoo.vim'
+        Bundle 'rizzatti/dash.vim'
     " }
 
     " JavaScript {
@@ -70,7 +71,6 @@
         Bundle 'wavded/vim-stylus'
         Bundle 'cakebaker/scss-syntax.vim'
         Bundle 'groenewege/vim-less'
-        Bundle 'skammer/vim-css-color'
     " }
 
     " Misc {
