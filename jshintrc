@@ -1,0 +1,29 @@
+{
+  "laxcomma": true,
+  "laxbreak": true,
+  "eqnull": true,
+
+  "es5": true,
+  "esnext": true,
+  "iterator": true,
+  "multistr": true,
+  "scripturl": true,
+  "smarttabs": true,
+  "supernew": true,
+
+  "undef": true,
+  "latedef": true,
+  "lastsemic": true,
+  "unused": true,
+  "sub": true,
+  "proto": true,
+  "newcap": true,
+  "forin": true,
+
+  "node": true,
+
+  "camelcase": true,
+  "quotmark": "single",
+  "indent": 2,
+  "curly": true
+}
