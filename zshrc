@@ -14,6 +14,7 @@ fi
 
 ### Env variables ###
 export GIT_EDITOR=/usr/local/bin/vim
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 ### Aliases ###
 # rsync
@@ -38,6 +39,9 @@ alias v="vim"
 # hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# component
+alias c="component"
 
 ### Functions ###
 # Start an HTTP server from a directory, optionally specifying the port

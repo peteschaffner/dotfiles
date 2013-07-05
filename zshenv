@@ -42,7 +42,7 @@ typeset -gU cdpath fpath mailpath path
 
 # Set the list of directories that Zsh searches for programs.
 path=(
-  /usr/local/{bin,sbin,share/npm/bin,share/python}
+  /usr/local/{bin,sbin,share/npm/bin}
   $path
 )
 
