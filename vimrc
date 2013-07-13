@@ -292,7 +292,12 @@
     " }
 
     " powerline {
-        set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+        "set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+    " }
+    "
+    " airline {
+        let g:airline_theme='solarized2'
+        let g:airline_powerline_fonts=1
     " }
 
     " yankring {
