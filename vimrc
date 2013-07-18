@@ -73,8 +73,8 @@
     set cursorline
 
     " change cursor shape in different modes
-    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    "let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    "let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
     " Graphical interface
     if has("gui_running")
@@ -300,8 +300,9 @@
     " }
     "
     " airline {
-        let g:airline_theme='solarized2'
+        let g:airline_theme='solarized'
         let g:airline_powerline_fonts=1
+        let g:airline_enable_syntastic=0
     " }
 
     " yankring {
