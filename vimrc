@@ -49,9 +49,7 @@
     " does not support setting of the cursor foreground color.
     if !has('gui_running') && $TERM_PROGRAM == 'Apple_Terminal'
          if &background == 'dark'
-           " For some reason setting ctermbg to 0 doesn't work...
-           " have to set it to some value that no color is assigned for???
-            hi Visual term=reverse cterm=reverse ctermfg=10 ctermbg=2000
+            hi Visual term=reverse cterm=reverse ctermfg=10 ctermbg=8
         endif
     endif
     "
@@ -71,6 +69,9 @@
 
     " highlight current line
     set cursorline
+
+    " sexy matching brackets
+    hi MatchParen ctermfg=8
 
     " change cursor shape in different modes
     "let &t_SI = "\<Esc>]50;CursorShape=1\x7"
