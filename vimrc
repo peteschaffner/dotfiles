@@ -49,7 +49,7 @@
     " does not support setting of the cursor foreground color.
     if !has('gui_running') && $TERM_PROGRAM == 'Apple_Terminal'
          if &background == 'dark'
-            hi Visual term=reverse cterm=reverse ctermfg=10 ctermbg=8
+            hi Visual term=reverse cterm=reverse ctermfg=10 ctermbg=black
         endif
     endif
     "
