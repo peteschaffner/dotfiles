@@ -17,8 +17,6 @@
     " Deps {
         Bundle 'gmarik/vundle'
         Bundle 'rking/ag.vim'
-        Bundle 'MarcWeber/vim-addon-mw-utils'
-        Bundle 'tomtom/tlib_vim'
     " }
 
     " General {
@@ -57,9 +55,8 @@
         Bundle 'pangloss/vim-javascript'
         Bundle 'briancollins/vim-jst'
         Bundle 'digitaltoad/vim-jade'
-        Bundle 'kchmck/vim-coffee-script'
-        Bundle 'AndrewRadev/vim-eco'
         Bundle 'marijnh/tern_for_vim'
+        Bundle 'heavenshell/vim-jsdoc'
     " }
 
     " HTML {
