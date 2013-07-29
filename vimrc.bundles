@@ -62,7 +62,6 @@
     " HTML {
         Bundle 'othree/html5.vim'
         Bundle 'mattn/zencoding-vim'
-        Bundle 'closetag.vim'
     " }
 
     " CSS {

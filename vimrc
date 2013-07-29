@@ -157,9 +157,6 @@
 " Key (re)Mappings {
     let mapleader = ','
 
-    " Wrap lines to 80
-    nmap <Leader>W :set formatoptions+=w<CR>:set tw=80<CR>gggqG<CR>
-
     " Easier window splits
     nnoremap <silent> vv <C-w>v
     nnoremap <silent> ss <C-w>s
@@ -229,6 +226,9 @@
 
     " Format JSON
     nmap <leader>jt <Esc>:%!python -m json.tool<CR>
+
+    " Wrap lines to 80
+    nmap <Leader>W :set formatoptions+=w<CR>:set tw=80<CR>gggqG<CR>
 " }
 
 " Bundle settings {
