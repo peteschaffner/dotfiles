@@ -157,6 +157,9 @@
 " Key (re)Mappings {
     let mapleader = ','
 
+    " Wrap lines to 80
+    nmap <Leader>W :set formatoptions+=w<CR>:set tw=80<CR>gggqG<CR>
+
     " Easier window splits
     nnoremap <silent> vv <C-w>v
     nnoremap <silent> ss <C-w>s
@@ -296,14 +299,10 @@
         vmap <D-A> :Tabularize /
     " }
 
-    " powerline {
-        "set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-    " }
-    "
     " airline {
-        let g:airline_theme='solarized'
-        let g:airline_powerline_fonts=1
-        let g:airline_enable_syntastic=0
+        let g:airline_theme = 'solarized'
+        let g:airline_powerline_fonts = 1
+        let g:airline_enable_syntastic = 0
     " }
 
     " yankring {
