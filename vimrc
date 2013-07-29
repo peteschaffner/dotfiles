@@ -314,52 +314,13 @@
         noremap <silent> <leader>gs :Gstatus<cr>
     " }
 
-    " neocomplcache {
-        let g:neocomplcache_enable_at_startup = 1
-        let g:neocomplcache_enable_camel_case_completion = 1
-        let g:neocomplcache_enable_underbar_completion = 1
-        let g:neocomplcache_enable_smart_case = 1
-
-        " default # of completions is 100, that's crazy
-        let g:neocomplcache_max_list = 5
-
-        " words less than 3 letters long aren't worth completing
-        let g:neocomplcache_auto_completion_start_length = 3
-
-        " Define keyword.
-        if !exists('g:neocomplcache_keyword_patterns')
-          let g:neocomplcache_keyword_patterns = {}
-        endif
-        let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-        " <TAB>: completion.
-        inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-        " Enable omni completion.
-        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-        autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-        autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-        autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-        " Enable heavy omni completion.
-        if !exists('g:neocomplcache_omni_patterns')
-          let g:neocomplcache_omni_patterns = {}
-        endif
-        let g:neocomplcache_omni_patterns.javascript = '[^. \t]\.\%(\h\w*\)\?'
-
-        " Prevent hanging with python: https://github.com/skwp/dotfiles/issues/163
-        let g:neocomplcache_omni_patterns['python'] = ''
-
-        " automatically open and close the popup menu / preview window
-        "au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-        " disable preview window entirely
-        set completeopt-=preview
+    " Syntastic {
+        let g:syntastic_error_symbol = '✗'
+        let g:syntastic_enable_highlighting = 1
     " }
 
-    " Syntastic {
-        let g:syntastic_error_symbol='✗'
-        let g:syntastic_enable_highlighting = 1
+    " UltiSnips {
+       let g:UltiSnipsExpandTrigger = '<c-j>'
     " }
 
     " Zen coding {

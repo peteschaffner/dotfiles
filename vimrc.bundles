@@ -42,13 +42,14 @@
         Bundle 'tpope/vim-fugitive'
         Bundle 'scrooloose/nerdcommenter'
         Bundle 'godlygeek/tabular'
-        Bundle 'Shougo/neocomplcache'
         Bundle 'Raimondi/delimitMate'
+        Bundle 'Valloric/YouCompleteMe'
     " }
 
     " Snippets {
         Bundle 'rizzatti/funcoo.vim'
         Bundle 'rizzatti/dash.vim'
+        Bundle 'SirVer/ultisnips'
     " }
 
     " JavaScript {
