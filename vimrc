@@ -292,13 +292,13 @@
         vmap <leader>{ c{<C-R>"}<ESC>
     " }
 
-    " nerdCommenter {
-        " Command-/ to toggle comments
+    " NERDCommenter {
         map <leader>/ <plug>NERDCommenterToggle
-        nmap <D-/> <plug>NERDCommenterToggle
-        imap <D-/> <plug>NERDCommenterInsert
+        nmap <Leader>/ <plug>NERDCommenterToggle
+        imap <Leader>/ <plug>NERDCommenterInsert
+        vmap <Leader>/ <plug>NERDCommenterComment
     " }
-    "
+
     " NERDTree {
         nmap <silent> <leader>f :NERDTreeToggle<CR>
     " }
@@ -310,13 +310,13 @@
     " }
 
     " airline {
-        let g:airline_theme = 'solarized'
-        let g:airline_powerline_fonts = 1
-        let g:airline_enable_syntastic = 0
+        let g:airline_theme='solarized'
+        let g:airline_powerline_fonts=1
+        let g:airline_enable_syntastic=0
     " }
 
     " yankring {
-        let g:yankring_history_file = '.yankring-history'
+        let g:yankring_history_file='.yankring-history'
         nnoremap <leader>Y :YRShow<CR>
     " }
 
@@ -325,16 +325,25 @@
     " }
 
     " Syntastic {
-        let g:syntastic_error_symbol = '✗'
-        let g:syntastic_enable_highlighting = 1
+        let g:syntastic_error_symbol='✗'
+        let g:syntastic_enable_highlighting=1
     " }
 
     " UltiSnips {
-       let g:UltiSnipsExpandTrigger = '<c-j>'
+       let g:UltiSnipsExpandTrigger='<c-j>'
     " }
 
     " Zen coding {
-        let g:user_zen_leader_key = '<c-e>'
+        let g:user_zen_leader_key='<leader>e'
+    " }
+
+    " EasyMotion {
+        hi link EasyMotionTarget Special
+        hi link EasyMotionShade  Comment
+    " }
+
+    " JSDoc {
+        let g:jsdoc_default_mapping=''
     " }
 " }
 
