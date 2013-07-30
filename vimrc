@@ -52,7 +52,17 @@
             hi Visual term=reverse cterm=reverse ctermfg=10 ctermbg=black
         endif
     endif
-    "
+
+    " Fast escape
+    if ! has('gui_running')
+        set ttimeoutlen=10
+        augroup FastEscape
+            autocmd!
+            au InsertEnter * set timeoutlen=1000
+            au InsertLeave * set timeoutlen=1000
+        augroup END
+    endif
+
     " line to show 80 character mark
     set colorcolumn=81
 
@@ -74,8 +84,8 @@
     hi MatchParen ctermfg=8
 
     " change cursor shape in different modes
-    "let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-    "let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
     " Graphical interface
     if has("gui_running")
