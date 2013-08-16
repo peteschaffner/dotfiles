@@ -1,13 +1,28 @@
+[ui]
+username=Pete Schaffner <pjschaffner@gmail.com>
+merge=Kaleidoscope
+
 [extensions]
-hgext.extdiff =
+mq=
+color=
+purge=
+rebase=
+record=
+progress=
+histedit=
+hgk=
+hgview=
+graphlog=
+hgext.extdiff=
+
+[diff]
+git=1
+nodates=1
 
 [extdiff]
-cmd.ksdiff = /usr/local/bin/ksdiff
-opts.ksdiff = --changeset --wait --filelist
-
-[ui]
-merge = Kaleidoscope
+cmd.ksdiff=/usr/local/bin/ksdiff
+opts.ksdiff=--changeset --wait --filelist
 
 [merge-tools]
-Kaleidoscope.executable = /usr/local/bin/ksdiff
-Kaleidoscope.args = --merge --output $output --base $base -- $local $other
+Kaleidoscope.executable=/usr/local/bin/ksdiff
+Kaleidoscope.args=--merge --output $output --base $base -- $local $other
