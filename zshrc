@@ -20,6 +20,9 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 # rsync
 alias rsx="rsync-synchronize --exclude-from '${ZDOTDIR:-$HOME}/.rsyncignore'"
 
+# Mercurial
+alias h='hg'
+
 # Git
 eval "$(hub alias -s)"
 alias gdt='git difftool'
@@ -34,14 +37,14 @@ alias trimcopy="tr -d '\n' | pbcopy"
 alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
 
 # vim
-alias v="vim"
+alias v='vim'
 
 # hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # component
-alias c="component"
+alias c='component'
 
 # bower
 alias bower='noglob bower'
