@@ -18,6 +18,12 @@
 " }
 
 " General {
+    " If you prefer the Omni-Completion tip window to close when a selection is
+    " made, these lines close it on movement in insert mode or when leaving
+    " insert mode
+    autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+    autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
     filetype plugin indent on       " Automatically detect file types.
     syntax on                       " syntax highlighting
     set mouse=a                     " automatically enable mouse usage
@@ -255,7 +261,7 @@
         nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 
         " Clear the cache, or 'R'eload ;)
-        nnoremap <silent> <leader>r :ClearCtrlPCache<cr>
+        nnoremap <silent> <leader>r :ClearCtrlPCache<CR> :NERDTreeFind<CR>
     " }
 
     " delimitmate {
