@@ -24,6 +24,5 @@
 
   "camelcase": true,
   "quotmark": "single",
-  "indent": 2,
-  "curly": true
+  "indent": 2
 }
