@@ -43,6 +43,9 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 # component
 alias c="component"
 
+# bower
+alias bower='noglob bower'
+
 ### Functions ###
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
