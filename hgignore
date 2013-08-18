@@ -1,0 +1,13 @@
+syntax: glob
+
+# OSX
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# Tern
+.tern-port

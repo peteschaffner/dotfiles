@@ -1,6 +1,8 @@
 [ui]
 username=Pete Schaffner <pjschaffner@gmail.com>
 merge=Kaleidoscope
+editor=vim
+ignore=~/.hgignore
 
 [extensions]
 mq=
@@ -11,7 +13,6 @@ record=
 progress=
 histedit=
 hgk=
-hgview=
 graphlog=
 hgext.extdiff=
 
