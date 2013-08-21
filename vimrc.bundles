@@ -26,7 +26,6 @@
         Bundle 'tpope/vim-eunuch'
         Bundle 'kien/ctrlp.vim'
         Bundle 'matchit.zip'
-        Bundle 'Lokaltog/powerline'
         Bundle 'bling/vim-airline'
         Bundle 'Lokaltog/vim-easymotion'
         Bundle 'YankRing.vim'
