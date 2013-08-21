@@ -23,11 +23,16 @@ alias rsx="rsync-synchronize --exclude-from '${ZDOTDIR:-$HOME}/.rsyncignore'"
 # Mercurial
 alias h='hg'
 alias hs='hg status'
-alias hl='hg log'
+alias hl='hg log -G'
 alias hd='hg diff'
 alias hD='hg ksdiff'
 alias hc='hg commit'
 alias hC='hg record'
+alias hbc='hg branch'
+alias hbl='hg branches'
+alias hco='hg checkout'
+alias hgb='hg gb'
+alias hcd='hg cd'
 
 # Git
 eval "$(hub alias -s)"
