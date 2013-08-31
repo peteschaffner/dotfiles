@@ -343,6 +343,7 @@ let g:syntastic_enable_highlighting=1
 " UltiSnips
 " -----------------------------------------------------------------------------
 let g:UltiSnipsExpandTrigger='<c-j>'
+let g:UltiSnipsSnippetDirectories=["snippets"]
 
 " Zen coding
 " -----------------------------------------------------------------------------
