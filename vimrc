@@ -358,6 +358,14 @@ hi link EasyMotionShade  Comment
 " -----------------------------------------------------------------------------
 let g:jsdoc_default_mapping=''
 
+" Indent Guides
+" -----------------------------------------------------------------------------
+let g:indent_guides_guide_size = 1
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=black
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=black
+
+
 " -----------------------------------------------------------------------------
 " Functions
 " -----------------------------------------------------------------------------
