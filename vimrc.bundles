@@ -36,6 +36,7 @@ Bundle 'rgarver/Kwbd.vim'
 " -----------------------------------------------------------------------------
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
+Bundle 'airblade/vim-gitgutter'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'godlygeek/tabular'
 Bundle 'Raimondi/delimitMate'
