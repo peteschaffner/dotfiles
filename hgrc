@@ -29,6 +29,6 @@ Kaleidoscope.executable = /usr/local/bin/ksdiff
 Kaleidoscope.args = --merge --output $output --base $base -- $local $other
 
 [alias]
-gb = graft -r 'branch($1)'
+gb = graft -r 'branch("$1")'
 cd = histedit -r 'min(branch(default) & draft())'
 draft = phase --draft --force -r $1
