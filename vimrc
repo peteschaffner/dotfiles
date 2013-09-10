@@ -20,6 +20,10 @@ source ~/.dotfiles/vimrc.bundles
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
+" Make Stylus files use the default CSS syntax (vim-stylus doesn't do well
+" with curly braces)
+autocmd BufNewFile,BufRead *.styl set filetype=css
+
 filetype plugin indent on       " Automatically detect file types.
 syntax on                       " syntax highlighting
 set mouse=a                     " automatically enable mouse usage
@@ -345,9 +349,9 @@ let g:syntastic_enable_highlighting=1
 let g:UltiSnipsExpandTrigger='<c-j>'
 let g:UltiSnipsSnippetDirectories=["snippets"]
 
-" Zen coding
+" Emmet
 " -----------------------------------------------------------------------------
-let g:user_zen_leader_key='<leader>e'
+let g:user_emmet_leader_key='<c-e>'
 
 " EasyMotion
 " -----------------------------------------------------------------------------
