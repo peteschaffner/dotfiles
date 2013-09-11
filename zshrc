@@ -34,9 +34,9 @@ alias hbl='hg branches'
 alias hco='hg checkout'
 alias hgb='hg gb'
 alias hcd='hg cd'
-# Trim trailing whitespace from any of the changed files but
-# only if they are not Jade files... then open a diff
-alias hws="hg status -m | sed 's/^M //' | sed '/\.jade/d' | xargs sed -i '' 's, *$,,' && hg ksdiff"
+# Trim trailing whitespace from any of the changed files that
+# that are JavaScript, CSS or Stylus files... then open a diff
+alias hws='hg status -mn | sed -E -n "/\.js|styl|css$/p" | xargs sed -i "" "s, *$,," && hg ksdiff'
 
 # Git
 eval "$(hub alias -s)"
