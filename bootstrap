@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# Install homebrew packages
+echo "Installing homebrew..."
+ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+brew doctor
+brew install ag fasd git hg hub vim
+
+# Install homebrew-cask apps
+echo "Installing homebrew-cask..."
+brew tap phinze/homebrew-cask
+brew install brew-cask
+brew cask install alfred app-cleaner arq chocolat clamxav daisy-disk dropbox fantastical google-chrome kaleidoscope keyremap4macbook pc-keyboardhack things xscope
+
+# Install prezto
+echo "Installing prezto..."
+zsh
+git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
+chsh -s /bin/zsh
+
+# Install dotfiles
+echo "Installing dotfiles..."
+git clone --recursive git@github.com:peteschaffner/dotfiles.git ~/.dotfiles
+
+# Setup zsh
+echo "Setting up zsh..."
+cd ~/.dotfiles
+for file in {chocolat,gitconfig,gitignore,hgignore,hgrc,jshintrc,rsyncignore,vim,vimrc,zpreztorc,zprofile,zshenv,zshrc}; do
+  ln -s ~/.dotfiles/$file ~/.$file;
+done
+
+# Setup vim
+echo "Setting up vim..."
+cp fonts/* ~/Library/Fonts/
+git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+vim -u ~/.vim/vimrc.bundles +BundleInstall +q
