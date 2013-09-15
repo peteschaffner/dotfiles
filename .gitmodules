@@ -1,42 +1,30 @@
-[submodule "chocolat/Mixins/csscomb.chocmixin"]
-	path = chocolat/Mixins/csscomb.chocmixin
-	url = https://github.com/drudge/csscomb.chocmixin.git
 [submodule "chocolat/Mixins/encode-entities.chocmixin"]
 	path = chocolat/Mixins/encode-entities.chocmixin
-	url = git@github.com:peteschaffner/encode-entities.chocmixin.git
+	url = https://github.com/peteschaffner/encode-entities.chocmixin.git
 [submodule "chocolat/Mixins/open-terminal-here.chocmixin"]
 	path = chocolat/Mixins/open-terminal-here.chocmixin
-	url = git@github.com:peteschaffner/open-terminal-here.chocmixin.git
+	url = https://github.com/peteschaffner/open-terminal-here.chocmixin.git
 [submodule "chocolat/Mixins/html-tidy.chocmixin"]
 	path = chocolat/Mixins/html-tidy.chocmixin
 	url = https://github.com/drudge/html-tidy.chocmixin.git
 [submodule "chocolat/Mixins/emmet.chocmixin"]
 	path = chocolat/Mixins/emmet.chocmixin
 	url = https://github.com/sergeche/emmet.chocmixin.git
-[submodule "chocolat/Mixins/prefixr.chocmixin"]
-	path = chocolat/Mixins/prefixr.chocmixin
-	url = https://github.com/drudge/prefixr.chocmixin.git
-[submodule "chocolat/Mixins/gist.chocmixin"]
-	path = chocolat/Mixins/gist.chocmixin
-	url = https://github.com/drudge/gist.chocmixin.git
 [submodule "chocolat/Mixins/zap-gremlins.chocmixin"]
 	path = chocolat/Mixins/zap-gremlins.chocmixin
 	url = https://github.com/drudge/zap-gremlins.chocmixin.git
 [submodule "chocolat/Mixins/javascript-tools.chocmixin"]
 	path = chocolat/Mixins/javascript-tools.chocmixin
 	url = https://github.com/drudge/javascript-tools.chocmixin.git
-[submodule "chocolat/Truffles/scss.truffle"]
-	path = chocolat/Truffles/scss.truffle
-	url = git://github.com/peteschaffner/scss.truffle.git
-[submodule "chocolat/Truffles/jade.truffle"]
-	path = chocolat/Truffles/jade.truffle
-	url = git://github.com/drudge/jade.truffle.git
-[submodule "chocolat/Truffles/node.truffle"]
-	path = chocolat/Truffles/node.truffle
-	url = git://github.com/drudge/node.truffle.git
-[submodule "chocolat/Truffles/selfml.truffle"]
-	path = chocolat/Truffles/selfml.truffle
-	url = git://github.com/chocolat/selfml.truffle.git
-[submodule "chocolat/Truffles/stylus.truffle"]
-	path = chocolat/Truffles/stylus.truffle
-	url = git://github.com/peteschaffner/stylus.truffle.git
+[submodule "chocolat/mixins/move-lines.chocmixin"]
+	path = chocolat/mixins/move-lines.chocmixin
+	url = https://github.com/peteschaffner/move-lines.chocmixin.git
+[submodule "chocolat/mixins/pete.chocmixin"]
+	path = chocolat/mixins/pete.chocmixin
+	url = https://github.com/peteschaffner/pete.chocmixin.git
+[submodule "chocolat/mixins/prettycss.chocmixin"]
+	path = chocolat/mixins/prettycss.chocmixin
+	url = https://github.com/drudge/prettycss.chocmixin.git
+[submodule "chocolat/mixins/strip-trailing-whitespace.chocmixin"]
+	path = chocolat/mixins/strip-trailing-whitespace.chocmixin
+	url = https://github.com/drudge/strip-trailing-whitespace.chocmixin.git
