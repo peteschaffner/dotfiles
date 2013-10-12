@@ -13,7 +13,7 @@ fi
 # Customize to your needs...
 
 ### Env variables ###
-export GIT_EDITOR=/usr/local/bin/vim
+export GIT_EDITOR=vim
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 ### Aliases ###

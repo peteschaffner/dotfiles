@@ -4,13 +4,13 @@
 echo "Installing homebrew..."
 ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 brew doctor
-brew install ag fasd git git-extras hub node vim
+brew install ag fasd git git-extras hub node
 
 # Install homebrew-cask apps
 echo "Installing homebrew-cask..."
 brew tap phinze/homebrew-cask
 brew install brew-cask
-brew cask install alfred app-cleaner arq clamxav daisy-disk dropbox fantastical google-chrome kaleidoscope keyremap4macbook one-password pc-keyboardhack things xscope
+brew cask install alfred app-cleaner arq clamxav daisy-disk dropbox fantastical google-chrome iterm2 kaleidoscope keyremap4macbook one-password pc-keyboardhack things xscope
 
 # Install prezto
 echo "Installing prezto..."
