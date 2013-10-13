@@ -10,7 +10,8 @@ brew install ag fasd git git-extras hub node
 echo "Installing homebrew-cask..."
 brew tap phinze/homebrew-cask
 brew install brew-cask
-brew cask install alfred app-cleaner arq clamxav daisy-disk dropbox fantastical google-chrome iterm2 kaleidoscope keyremap4macbook one-password pc-keyboardhack things xscope
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+brew cask install alfred app-cleaner arq daisy-disk dropbox fantastical google-chrome iterm2 kaleidoscope keyremap4macbook one-password pc-keyboardhack things xscope
 
 # Install prezto
 echo "Installing prezto..."
@@ -20,7 +21,7 @@ chsh -s /bin/zsh
 # Setup zsh
 echo "Setting up zsh..."
 cd ~/.dotfiles
-for file in {chocolat,gitconfig,gitignore,hgignore,hgrc,jshintrc,rsyncignore,vim,vimrc,zpreztorc,zprofile,zshenv,zshrc}; do
+for file in {gitconfig,gitignore,jshintrc,rsyncignore,vim,vimrc,zpreztorc,zprofile,zshenv,zshrc}; do
   ln -s ~/.dotfiles/$file ~/.$file;
 done
 
