@@ -29,4 +29,4 @@ done
 echo "Setting up vim..."
 cp fonts/* ~/Library/Fonts/
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-vim -u ~/.vim/vimrc.bundles +BundleInstall +q
+vim -u ~/.dotfiles/vimrc.bundles +BundleInstall +q
