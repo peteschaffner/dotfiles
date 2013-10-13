@@ -18,10 +18,6 @@ zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 chsh -s /bin/zsh
 
-# Install dotfiles
-echo "Installing dotfiles..."
-git clone --recursive git@github.com:peteschaffner/dotfiles.git ~/.dotfiles
-
 # Setup zsh
 echo "Setting up zsh..."
 cd ~/.dotfiles
