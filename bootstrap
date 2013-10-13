@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 # Install homebrew packages
 echo "Installing homebrew..."
@@ -14,7 +14,6 @@ brew cask install alfred app-cleaner arq clamxav daisy-disk dropbox fantastical 
 
 # Install prezto
 echo "Installing prezto..."
-zsh
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 chsh -s /bin/zsh
 
