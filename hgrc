@@ -15,6 +15,10 @@ histedit =
 hgk =
 graphlog =
 hgext.extdiff =
+pager =
+
+[pager]
+pager = less
 
 [diff]
 git = 1
