@@ -39,7 +39,7 @@
 [core]
   autocrlf = false
   excludesfile = ~/.gitignore
-  pager = less -r
+  pager = less -R
   quotepath = false
 
 [advice]
