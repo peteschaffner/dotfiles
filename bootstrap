@@ -4,7 +4,7 @@
 echo "Installing homebrew..."
 ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 brew doctor
-brew install ag fasd git git-extras hub node
+brew install ag cmake fasd git git-extras hub node vim vimpager
 
 # Install homebrew-cask apps
 echo "Installing homebrew-cask..."

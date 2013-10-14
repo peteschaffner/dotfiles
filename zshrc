@@ -15,8 +15,14 @@ fi
 ### Env variables ###
 export GIT_EDITOR=vim
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export PAGER=/usr/local/bin/vimpager
+export RBENV_ROOT=/usr/local/var/rbenv
 
 ### Aliases ###
+# vimpager
+alias less=$PAGER
+alias zless=$PAGER
+
 # rsync
 alias rsx="rsync-synchronize --exclude-from '${ZDOTDIR:-$HOME}/.rsyncignore'"
 
