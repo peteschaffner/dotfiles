@@ -25,27 +25,10 @@ alias zless=$PAGER
 # rsync
 alias rsx="rsync-synchronize --exclude-from '${ZDOTDIR:-$HOME}/.rsyncignore'"
 
-# Mercurial
-alias h='hg'
-alias hs='hg status'
-alias hl='hg log -G'
-alias hd='hg diff'
-alias hD='hg ksdiff'
-alias hc='hg commit'
-alias hC='hg record'
-alias hb='hg branch'
-alias hbc='hg branch'
-alias hbl='hg branches'
-alias hco='hg checkout'
-alias hgb='hg gb'
-alias hcd='hg cd'
-# Trim trailing whitespace from any of the changed files that
-# that are JavaScript, CSS or Stylus files... then open a diff
-alias hws='hg status -mn | sed -E -n "/\.js|styl|css$/p" | xargs sed -i "" "s, *$,," && hg ksdiff'
-
 # Git
-eval "$(hub alias -s)"
 alias gdt='git difftool'
+alias gdT='git difftool --cached'
+alias gbX='git delete-branch'
 
 # z, but with fasd
 alias z='j'
@@ -65,9 +48,6 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 
 # component
 alias c='component'
-
-# bower
-alias bower='noglob bower'
 
 ### Functions ###
 # Start an HTTP server from a directory, optionally specifying the port
