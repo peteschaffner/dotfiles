@@ -19,6 +19,7 @@ Bundle 'rking/ag.vim'
 " General
 " -----------------------------------------------------------------------------
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'chriskempson/base16-vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-eunuch'

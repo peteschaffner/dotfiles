@@ -17,6 +17,17 @@ export GIT_EDITOR=vim
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export RBENV_ROOT=/usr/local/var/rbenv
 
+### Base16 Shell
+#BASE16_SCHEME="default"
+#BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
+#[[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
+showcolors256 () {
+    for code in {0..255}
+    do
+        echo -e "\e[38;05;${code}m $code: Test"
+    done
+}
+
 ### Aliases ###
 # vimpager
 alias less=$PAGER

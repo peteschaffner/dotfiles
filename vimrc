@@ -50,9 +50,9 @@ set undofile
 " -----------------------------------------------------------------------------
 " Vim UI
 " -----------------------------------------------------------------------------
+"let base16colorspace=256  " Access colors present in 256 colorspace
 set background=dark
-colorscheme solarized
-set t_Co=256
+colorscheme base16-ocean
 
 " Highlighted text is unreadable in Terminal.app because it
 " does not support setting of the cursor foreground color.
@@ -75,17 +75,6 @@ endif
 " line to show 80 character mark
 set colorcolumn=81
 
-" make line numbers beautiful
-hi LineNr ctermbg=NONE
-hi LineNr ctermfg=black
-
-" make vert splits beautiful
-hi VertSplit ctermbg=NONE
-hi VertSplit ctermfg=black
-
-" column color for syntactic errors/warnings
-hi SignColumn ctermbg=NONE
-
 " highlight current line
 set cursorline
 
@@ -95,46 +84,6 @@ hi MatchParen ctermfg=8
 " change cursor shape in different modes (iTerm2)
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-
-" Graphical interface
-if has("gui_running")
-  set background=light
-
-  set columns=84
-
-  " make line numbers beautiful
-  hi LineNr guibg=NONE
-  hi LineNr guifg=#eee8d5
-
-  " make vert splits beautiful
-  hi VertSplit guibg=NONE
-  hi VertSplit guifg=#eee8d5
-
-  " Line highlight color
-  hi CursorLineNr guifg=#93a1a1
-
-  " column color for syntactic errors/warnings
-  hi SignColumn guibg=NONE
-
-  " hot pink for searching is so hawt
-  hi Search guifg=#FF5E99
-  hi IncSearch guifg=#ff8ab5
-
-  " sexy matching brackets
-  hi MatchParen gui=NONE guibg=#93a1a1 guifg=#eee8d5
-
-  " pretty spelling error
-  hi SpellBad gui=underline
-  hi SpellCap gui=underline
-  hi SpellRare gui=underline
-  hi SpellLocal gui=underline
-
-  set guifont=Inconsolata:h15     " set font/font-size
-
-  " Disable the scrollbars
-  set guioptions-=r
-  set guioptions-=L
-endif
 
 set laststatus=2                " always show statusline
 set noshowmode                  " display the current mode
@@ -326,7 +275,7 @@ vmap <leader>T :Tabularize /
 
 " airline
 " -----------------------------------------------------------------------------
-let g:airline_theme='solarized'
+let g:airline_theme='base16'
 let g:airline_powerline_fonts=1
 let g:airline_enable_syntastic=0
 
@@ -400,24 +349,6 @@ function! SetupWrapping()
 endfunction
 command! Wrap :call SetupWrapping()
 map <Leader>wl :Wrap<CR>
-
-" Toggle Solarized theme
-function! ToggleSolarizedTheme()
-  if (&background == 'dark')
-    set background=light
-    hi LineNr guibg=NONE
-    hi LineNr guifg=#eee8d5
-    hi CursorLineNr guifg=#93a1a1
-    hi SignColumn guibg=NONE
-  else
-    set background=dark
-    hi LineNr guibg=NONE
-    hi LineNr guifg=#073642
-    hi CursorLineNr guifg=#586e75
-    hi SignColumn guibg=NONE
-  endif
-endfunction
-command! ToggleSolarized :call ToggleSolarizedTheme()
 
 " Z - cd to recent / frequent directories
 command! -nargs=* Z :call Z(<f-args>)
