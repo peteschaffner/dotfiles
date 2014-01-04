@@ -274,7 +274,7 @@
 	<key>HotKeyTogglesWindow</key>
 	<true/>
 	<key>Hotkey</key>
-	<true/>
+	<false/>
 	<key>HotkeyChar</key>
 	<integer>96</integer>
 	<key>HotkeyCode</key>
@@ -310,7 +310,7 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>261 102 924 485 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 324 1280 454 0 0 1280 778 </string>
+	<string>0 288 698 476 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>145 158 698 476 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
@@ -486,7 +486,7 @@
 			<key>Background Image Location</key>
 			<string></string>
 			<key>Blend</key>
-			<real>0.44620180130004883</real>
+			<real>0.30000001192092896</real>
 			<key>Blink Allowed</key>
 			<false/>
 			<key>Blinking Cursor</key>
@@ -885,7 +885,7 @@
 			<key>Rows</key>
 			<integer>25</integer>
 			<key>Screen</key>
-			<integer>0</integer>
+			<integer>-1</integer>
 			<key>Scrollback Lines</key>
 			<integer>1000</integer>
 			<key>Scrollback With Status Bar</key>
@@ -1045,7 +1045,7 @@
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
-			<integer>2</integer>
+			<integer>0</integer>
 			<key>Working Directory</key>
 			<string>/Users/pete</string>
 		</dict>
