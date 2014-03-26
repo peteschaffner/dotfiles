@@ -2,7 +2,7 @@
 .DS_Store
 .AppleDouble
 .LSOverride
-Icon
+Icon?
 ._*
 .Spotlight-V100
 .Trashes
@@ -16,8 +16,8 @@ Session.vim
 # Sublime Text
 *.sublime-workspace
 
-# Sass
-*.sass-cache
+# Espresso
+*.esproj
 
 # Todo lists & bug lists
 tasks
