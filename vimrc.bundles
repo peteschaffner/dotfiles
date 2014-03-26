@@ -39,14 +39,14 @@ Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'tpope/vim-git'
-Bundle 'scrooloose/nerdcommenter'
+Bundle 'tomtom/tcomment_vim'
 Bundle 'godlygeek/tabular'
 Bundle 'Raimondi/delimitMate'
 Bundle 'Valloric/YouCompleteMe'
 
 " Snippets
 " -----------------------------------------------------------------------------
-Bundle 'SirVer/ultisnips'
+" Bundle 'SirVer/ultisnips'
 
 " JavaScript
 " -----------------------------------------------------------------------------

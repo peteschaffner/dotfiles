@@ -29,7 +29,7 @@ syntax on                       " syntax highlighting
 set mouse=a                     " automatically enable mouse usage
 scriptencoding utf-8
 
-set clipboard=unnamed           " on mac use * register for copy-paste
+"set clipboard=unnamed           " on mac use * register for copy-paste
 set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
 set shortmess+=I                " remove splash screen
 set history=1000                " Store a ton of history (default is 20)
@@ -256,12 +256,13 @@ map <leader>{ ysiw{
 vmap <leader>} c{ <C-R>" }<ESC>
 vmap <leader>{ c{<C-R>"}<ESC>
 
-" NERDCommenter
+" tcomment
 " -----------------------------------------------------------------------------
-map <leader>/ <plug>NERDCommenterToggle
-nmap <Leader>/ <plug>NERDCommenterToggle
-imap <Leader>/ <plug>NERDCommenterInsert
-vmap <Leader>/ <plug>NERDCommenterComment
+call tcomment#DefineType('javascript_block', g:tcommentBlockC2)
+map <leader>/ gcc
+nmap <Leader>/ gcc
+imap <Leader>/ gcc
+vmap <Leader>/ gc
 
 " NERDTree
 " -----------------------------------------------------------------------------
@@ -287,6 +288,10 @@ nnoremap <leader>Y :YRShow<CR>
 " fugitive
 " -----------------------------------------------------------------------------
 noremap <silent> <leader>gs :Gstatus<cr>
+
+" fugitive
+" -----------------------------------------------------------------------------
+let g:gitgutter_enabled = 0
 
 " Syntastic
 " -----------------------------------------------------------------------------
