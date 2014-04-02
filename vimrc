@@ -78,9 +78,6 @@ set colorcolumn=81
 " highlight current line
 set cursorline
 
-" sexy matching brackets
-hi MatchParen ctermfg=8
-
 " change cursor shape in different modes (iTerm2)
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
