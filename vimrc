@@ -257,9 +257,9 @@ vmap <leader>{ c{<C-R>"}<ESC>
 " -----------------------------------------------------------------------------
 call tcomment#DefineType('javascript_block', g:tcommentBlockC2)
 map <leader>/ gcc
-nmap <Leader>/ gcc
-imap <Leader>/ gcc
-vmap <Leader>/ gc
+nmap <leader>/ gcc
+vmap <leader>/ gc
+map <leader>? :TCommentBlock<CR>
 
 " NERDTree
 " -----------------------------------------------------------------------------
@@ -285,10 +285,6 @@ nnoremap <leader>Y :YRShow<CR>
 " fugitive
 " -----------------------------------------------------------------------------
 noremap <silent> <leader>gs :Gstatus<cr>
-
-" fugitive
-" -----------------------------------------------------------------------------
-let g:gitgutter_enabled = 0
 
 " Syntastic
 " -----------------------------------------------------------------------------
