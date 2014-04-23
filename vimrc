@@ -206,8 +206,7 @@ nmap <Leader>W :set formatoptions+=w<CR>:set tw=80<CR>gggqG<CR>
 " ctrlP
 " -----------------------------------------------------------------------------
 let g:ctrlp_working_path_mode = 'rw'
-let g:ctrlp_custom_ignore = '\.git$'
-let g:ctrlp_custom_ignore = 'Build$'
+let g:ctrlp_custom_ignore = 'node_modules\|components\|git'
 let g:ctrlp_by_filename = 1
 
 let g:ctrlp_map = ',t'
