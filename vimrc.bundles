@@ -18,42 +18,29 @@ Bundle 'rking/ag.vim'
 
 " General
 " -----------------------------------------------------------------------------
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'chriskempson/base16-vim'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-eunuch'
 Bundle 'kien/ctrlp.vim'
 Bundle 'matchit.zip'
-Bundle 'bling/vim-airline'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'YankRing.vim'
-Bundle 'nathanaelkane/vim-indent-guides'
 Bundle 'scrooloose/nerdtree'
 Bundle 'henrik/vim-open-url'
-Bundle 'rgarver/Kwbd.vim'
 
 " General Programming
 " -----------------------------------------------------------------------------
 Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
-Bundle 'airblade/vim-gitgutter'
 Bundle 'tpope/vim-git'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'godlygeek/tabular'
 Bundle 'Raimondi/delimitMate'
 Bundle 'Valloric/YouCompleteMe'
-
-" Snippets
-" -----------------------------------------------------------------------------
-" Bundle 'SirVer/ultisnips'
 
 " JavaScript
 " -----------------------------------------------------------------------------
 Bundle 'leshill/vim-json'
 Bundle 'pangloss/vim-javascript'
-Bundle 'briancollins/vim-jst'
-Bundle 'digitaltoad/vim-jade'
 Bundle 'marijnh/tern_for_vim'
 Bundle 'heavenshell/vim-jsdoc'
 
@@ -65,8 +52,6 @@ Bundle 'mattn/emmet-vim'
 " CSS
 " -----------------------------------------------------------------------------
 Bundle 'hail2u/vim-css3-syntax'
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'groenewege/vim-less'
 
 " Misc
 " -----------------------------------------------------------------------------

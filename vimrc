@@ -20,10 +20,6 @@ source ~/.dotfiles/vimrc.bundles
 autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-" Make Stylus files use the default CSS syntax (vim-stylus doesn't do well
-" with curly braces)
-autocmd BufNewFile,BufRead *.styl set filetype=css
-
 filetype plugin indent on       " Automatically detect file types.
 syntax on                       " syntax highlighting
 set mouse=a                     " automatically enable mouse usage
@@ -50,18 +46,6 @@ set undofile
 " -----------------------------------------------------------------------------
 " Vim UI
 " -----------------------------------------------------------------------------
-"let base16colorspace=256  " Access colors present in 256 colorspace
-set background=dark
-colorscheme base16-ocean
-
-" Highlighted text is unreadable in Terminal.app because it
-" does not support setting of the cursor foreground color.
-if !has('gui_running') && $TERM_PROGRAM == 'Apple_Terminal'
-  if &background == 'dark'
-    hi Visual term=reverse cterm=reverse ctermfg=10 ctermbg=black
-  endif
-endif
-
 " Fast escape
 if ! has('gui_running')
   set ttimeoutlen=10
@@ -75,14 +59,10 @@ endif
 " line to show 80 character mark
 set colorcolumn=81
 
-" highlight current line
-set cursorline
-
 " change cursor shape in different modes (iTerm2)
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
-set laststatus=2                " always show statusline
 set noshowmode                  " display the current mode
 set backspace=indent,eol,start  " backspace for dummies
 set linespace=1                 " No extra spaces between rows
@@ -162,8 +142,6 @@ map <leader>z <C-z>
 map <leader>s :w<CR>
 " Quit
 map <leader>q :q<CR>
-" Delete buffer
-map <leader>x <Plug>Kwbd
 
 " File browser remaps
 nmap <silent> <D-\> :maca openFileBrowser:<CR>
@@ -264,18 +242,6 @@ map <leader>? :TCommentBlock<CR>
 " -----------------------------------------------------------------------------
 nmap <silent> <leader>f :NERDTreeToggle<CR>
 
-" tabular
-" -----------------------------------------------------------------------------
-" Hit Cmd-Shift-A then type a character you want to align by
-nmap <leader>T :Tabularize /
-vmap <leader>T :Tabularize /
-
-" airline
-" -----------------------------------------------------------------------------
-let g:airline_theme='base16'
-let g:airline_powerline_fonts=1
-let g:airline_enable_syntastic=0
-
 " yankring
 " -----------------------------------------------------------------------------
 let g:yankring_history_file='.yankring-history'
@@ -290,11 +256,6 @@ noremap <silent> <leader>gs :Gstatus<cr>
 let g:syntastic_error_symbol='✗'
 let g:syntastic_enable_highlighting=1
 
-" UltiSnips
-" -----------------------------------------------------------------------------
-let g:UltiSnipsExpandTrigger='<c-j>'
-let g:UltiSnipsSnippetDirectories=["snippets"]
-
 " Emmet
 " -----------------------------------------------------------------------------
 let g:user_emmet_leader_key='<c-e>'
@@ -307,13 +268,6 @@ hi link EasyMotionShade  Comment
 " JSDoc
 " -----------------------------------------------------------------------------
 let g:jsdoc_default_mapping=''
-
-" Indent Guides
-" -----------------------------------------------------------------------------
-let g:indent_guides_guide_size = 1
-let g:indent_guides_auto_colors = 0
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd ctermbg=black
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=black
 
 
 " -----------------------------------------------------------------------------
@@ -346,30 +300,6 @@ function! SetupWrapping()
 endfunction
 command! Wrap :call SetupWrapping()
 map <Leader>wl :Wrap<CR>
-
-" Z - cd to recent / frequent directories
-command! -nargs=* Z :call Z(<f-args>)
-function! Z(...)
-  let cmd = 'fasd -d -e printf'
-  for arg in a:000
-    let cmd = cmd . ' ' . arg
-  endfor
-  let path = system(cmd)
-  if isdirectory(path)
-    echo path
-    exec 'cd ' . path
-  endif
-endfunction
-
-" Toggle relative line numbers
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-nnoremap <silent> <Leader>n :call NumberToggle()<cr>
 
 " Open file in Chrome
 function! OpenInChrome()
