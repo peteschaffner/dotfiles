@@ -1,0 +1,9 @@
+machine github.com
+login peteschaffner
+password xxx
+protocol https
+ 
+machine api.github.com
+login peteschaffner
+password xxx
+protocol https
