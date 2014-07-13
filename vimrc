@@ -1,89 +1,114 @@
 " -----------------------------------------------------------------------------
-" Environment
+" Vundle
 " -----------------------------------------------------------------------------
-set nocompatible        " must be first line
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" Setup Bundle Support
-filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
-" Source our bundle list
-source ~/.dotfiles/vimrc.bundles
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+Plugin 'rking/ag.vim'
+
+" General
+" -----------------------------------------------------------------------------
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-eunuch'
+Plugin 'kien/ctrlp.vim'
+Plugin 'matchit.zip'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'scrooloose/nerdtree'
+Plugin 'henrik/vim-open-url'
+Plugin 'chriskempson/base16-vim'
+Plugin 'bling/vim-airline'
+
+" General Programming
+" -----------------------------------------------------------------------------
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-git'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'Valloric/YouCompleteMe'
+
+" JavaScript
+" -----------------------------------------------------------------------------
+Plugin 'pangloss/vim-javascript'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'heavenshell/vim-jsdoc'
+Plugin 'elzr/vim-json'
+
+" HTML
+" -----------------------------------------------------------------------------
+Plugin 'othree/html5.vim'
+Plugin 'mattn/emmet-vim'
+
+" CSS
+" -----------------------------------------------------------------------------
+Plugin 'hail2u/vim-css3-syntax'
+
+call vundle#end()
 
 
 " -----------------------------------------------------------------------------
 " General
 " -----------------------------------------------------------------------------
-" If you prefer the Omni-Completion tip window to close when a selection is
-" made, these lines close it on movement in insert mode or when leaving
-" insert mode
-autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
-autocmd InsertLeave * if pumvisible() == 0|pclose|endif
-
-filetype plugin indent on       " Automatically detect file types.
-syntax on                       " syntax highlighting
+filetype plugin indent on       " automatically detect file types
+syntax enable                   " enable syntax highlighting
 set mouse=a                     " automatically enable mouse usage
-scriptencoding utf-8
-
-"set clipboard=unnamed           " on mac use * register for copy-paste
 set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
 set shortmess+=I                " remove splash screen
 set history=1000                " Store a ton of history (default is 20)
 set spell                       " spell checking on
 set hidden                      " allow buffer switching without saving
 set autoread                    " reload files changed outside vim
+set completeopt-=preview        " don't show doc preview window
 
-" Turn off swap files and backups
+" Turn off swap files and backups (legacy way of backing up files)
 set noswapfile
 set nobackup
 set nowb
 
+" Save undo history
 silent !mkdir ~/.vim/backups > /dev/null 2>&1
 set undodir=~/.vim/backups
 set undofile
 
+" auto-reload vimrc
+augroup reload_vimrc
+  autocmd!
+  autocmd BufWritePost ~/.dotfiles/vimrc source $MYVIMRC
+augroup END
+
 
 " -----------------------------------------------------------------------------
-" Vim UI
+" UI
 " -----------------------------------------------------------------------------
-" Fast escape
-if ! has('gui_running')
-  set ttimeoutlen=10
-  augroup FastEscape
-    autocmd!
-    au InsertEnter * set timeoutlen=1000
-    au InsertLeave * set timeoutlen=1000
-  augroup END
-endif
-
-" line to show 80 character mark
-set colorcolumn=81
-
-" change cursor shape in different modes (iTerm2)
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-
-set noshowmode                  " display the current mode
+set t_Co=256                    " use 256 colors
+let base16colorspace=256        " access colors present in 256 colorspace
+colorscheme base16-ocean        " set theme
+set background=dark             " dark theme variant
+set number                      " show line numbers
+set cursorline                  " highlight current line
+set colorcolumn=81              " line to show 80 character mark
+set showcmd                     " show command in bottom bar
+set laststatus=2                " always show status line
 set backspace=indent,eol,start  " backspace for dummies
 set linespace=1                 " No extra spaces between rows
-set nu                          " Line numbers on
-set gcr=a:blinkon0              " Disable cursor blink
 set visualbell                  " No sounds
 set showmatch                   " show matching brackets/parenthesis
 set incsearch                   " find as you type search
 set hlsearch                    " highlight search terms
 set ignorecase                  " case insensitive search
-set smartcase                   " case sensitive when uc present
-set whichwrap=b,s,h,l,<,>,[,]   " backspace and cursor keys wrap to
-set scrolloff=8                 " start scrolling when we're 8 lines away from margins
-set sidescrolloff=15
-set sidescroll=1
+set smartcase                   " case sensitive when uppercase present
+set wildmenu                    " visual autocomplete for command menu"
+set scrolloff=8                 " start scrolling when 8 lines away from margins
+set sidescrolloff=15            " start scrolling when 15 columns away from edge
+set sidescroll=1                " more natural, incremental horizontal scrolling
 set nofoldenable                " don't fold by default
-set foldmethod=indent           " fold based on indent
-set list
-set listchars=tab:\ \ ,trail:·,nbsp:.         " Highlight problematic whitespace
-set ruler                                     " show the ruler
-set rulerformat=%30(%=%l,%c%V\ %y%m%r%w\ %P%) " a ruler on steroids
 
 
 " -----------------------------------------------------------------------------
@@ -95,16 +120,23 @@ set shiftwidth=2                " use indents of 2 spaces
 set expandtab                   " tabs are spaces, not tabs
 set tabstop=2                   " an indentation every four columns
 set softtabstop=2               " let backspace delete indent
-set matchpairs+=<:>             " match, to be used with %
-set pastetoggle=<F12>           " pastetoggle (sane indentation on pastes)
-" Remove trailing whitespaces and ^M chars
-autocmd FileType javascript,css,stylus,html autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
+set matchpairs+=<:>             " match angle brackets on '%'
+
+" Highlight problematic whitespace
+set list
+set listchars=tab:\ \ ,trail:·,nbsp:.
+
+" Remove trailing whitespaces and ^M chars on save
+autocmd FileType javascript,css,html autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
 
 " -----------------------------------------------------------------------------
 " Key (re)Mappings
 " -----------------------------------------------------------------------------
 let mapleader = ','
+
+" remap 'U' to undo, for ease of use
+nmap U <c-r>
 
 " Easier window splits
 nnoremap <silent> vv <C-w>v
@@ -117,56 +149,43 @@ nnoremap <silent> <C-k> <C-w>k
 nnoremap <silent> <C-j> <C-w>j
 
 " Preserve indentation while pasting text from the OS X clipboard
-imap <Leader>p  <C-O>:set paste<CR><C-r>+<C-O>:set nopaste<CR>
-nmap <Leader>p  "+p
-vmap <Leader>p  "+p
+imap <leader>p  <C-O>:set paste<CR><C-r>+<C-O>:set nopaste<CR>
+nmap <leader>p  "+p
+vmap <leader>p  "+p
 
 " Yank to the clipboard
-vmap <Leader>y  "+y
-nmap <Leader>yy  "+yy
+vmap <leader>y  "+y
+nmap <leader>yy  "+yy
 
 "Clear current search highlight by double tapping //
 nmap <silent> // :nohlsearch<CR>
 
-" Apple-* Highlight all occurrences of current word (like '*' but without moving)
+" highlight all occurrences of current word (like '*' but without moving)
 " http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches
-nnoremap <D-*> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
-
-" Remap 'U' to undo, for ease of use
-nmap U <c-r>
+nnoremap <F8> :let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
 
 " Convenience mappings for file and buffer commands
 " Suspend buffer
 map <leader>z <C-z>
-" Save file
-map <leader>s :w<CR>
 " Quit
 map <leader>q :q<CR>
-
-" File browser remaps
-nmap <silent> <D-\> :maca openFileBrowser:<CR>
-nmap <silent> <D-]> :maca revealInFileBrowser:<CR>
-
-" Open terminal here
-nmap <silent> <D-O> :!open -a Terminal .<CR><CR>
-
-" Quickly resize window to desired size
-nmap <Leader>rs :set columns=84<CR>
-
-" Buffer navigation
 " Delete current buffer
-nmap <D-X> :confirm bd<CR>
-" Previous buffer
-nmap <D-H> :confirm bprev<CR>
-" Next buffer
-nmap <D-L> :confirm bnext<CR>
+nmap <leader>x :confirm bd<CR>
+" close window/split
+map <leader>w :close<CR>
+" save session
+nnoremap <leader>s :mksession!<CR>
+" For when you forget to sudo.. Really Write the file.
+cmap w!! w !sudo tee % >/dev/null
+
 
 " Wrapped lines goes down/up to next row, rather than next line in file.
 nnoremap j gj
 nnoremap k gk
 
-" For when you forget to sudo.. Really Write the file.
-cmap w!! w !sudo tee % >/dev/null
+" move to beginning/end of line (easier to remember)
+nnoremap B ^
+nnoremap E $
 
 " Encode HTML entities
 nmap <silent> <leader>he :%!perl -p -i -e 'BEGIN { use HTML::Entities; use Encode; } $_=Encode::decode_utf8($_) unless Encode::is_utf8($_); $_=Encode::encode("ascii", $_, sub{HTML::Entities::encode_entities(chr shift)});'<cr>
@@ -174,18 +193,26 @@ nmap <silent> <leader>he :%!perl -p -i -e 'BEGIN { use HTML::Entities; use Encod
 " Format JSON
 nmap <leader>jt <Esc>:%!python -m json.tool<CR>
 
-" Wrap lines to 80
-nmap <Leader>W :set formatoptions+=w<CR>:set tw=80<CR>gggqG<CR>
-
 
 " -----------------------------------------------------------------------------
-" Bundle settings
+" Plugin Settings
 " -----------------------------------------------------------------------------
+
+" Tern
+" -----------------------------------------------------------------------------
+let tern_show_signature_in_pum=1
+
+" Airline
+" -----------------------------------------------------------------------------
+let g:airline_powerline_fonts=1
+
 " ctrlP
 " -----------------------------------------------------------------------------
-let g:ctrlp_working_path_mode = 'rw'
-let g:ctrlp_custom_ignore = 'node_modules\|components\|git'
-let g:ctrlp_by_filename = 1
+" CtrlP settings
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
 let g:ctrlp_map = ',t'
 nnoremap <silent> <leader>t :CtrlPMixed<CR>
@@ -193,8 +220,9 @@ nnoremap <silent> <leader>t :CtrlPMixed<CR>
 " Additional mapping for buffer search
 nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 
-" Clear the cache, or 'R'eload ;)
-nnoremap <silent> <leader>r :ClearCtrlPCache<CR> :NERDTreeFind<CR>
+" NERDTree
+" -----------------------------------------------------------------------------
+nmap <silent> <leader>f :NERDTreeToggle<CR>
 
 " delimitmate
 " -----------------------------------------------------------------------------
@@ -238,23 +266,25 @@ nmap <leader>/ gcc
 vmap <leader>/ gc
 map <leader>? :TCommentBlock<CR>
 
-" NERDTree
-" -----------------------------------------------------------------------------
-nmap <silent> <leader>f :NERDTreeToggle<CR>
-
-" yankring
-" -----------------------------------------------------------------------------
-let g:yankring_history_file='.yankring-history'
-nnoremap <leader>Y :YRShow<CR>
-
 " fugitive
 " -----------------------------------------------------------------------------
 noremap <silent> <leader>gs :Gstatus<cr>
 
 " Syntastic
 " -----------------------------------------------------------------------------
-let g:syntastic_error_symbol='✗'
-let g:syntastic_enable_highlighting=1
+let g:syntastic_error_symbol='●'
+highlight link SyntasticErrorSign GitGutterDelete
+let g:syntastic_warning_symbol='○'
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_highlighting=0
+
+" Airline
+" -----------------------------------------------------------------------------
+let g:airline#extensions#syntastic#enabled=1
+
+" Ag
+" -----------------------------------------------------------------------------
+nnoremap <leader>a :Ag 
 
 " Emmet
 " -----------------------------------------------------------------------------
@@ -262,7 +292,7 @@ let g:user_emmet_leader_key='<c-e>'
 
 " EasyMotion
 " -----------------------------------------------------------------------------
-hi link EasyMotionTarget Special
+hi EasyMotionTarget ctermfg=red
 hi link EasyMotionShade  Comment
 
 " JSDoc
@@ -301,10 +331,13 @@ endfunction
 command! Wrap :call SetupWrapping()
 map <Leader>wl :Wrap<CR>
 
-" Open file in Chrome
-function! OpenInChrome()
-  let filePath = escape(expand("%:p"), ' ')
-  exec '!open -a Google\ Chrome ' . filePath
+" Toggle between number and relativenumber
+function! ToggleNumber()
+  if(&relativenumber == 1)
+      set norelativenumber
+      set number
+  else
+      set relativenumber
+  endif
 endfunction
-
-command! Chrome :call OpenInChrome()
+command! ToggleNumber :call ToggleNumber()
