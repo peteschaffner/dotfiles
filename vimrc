@@ -172,7 +172,7 @@ map <leader>q :q<CR>
 " Delete current buffer
 nmap <leader>x :confirm bd<CR>
 " close window/split
-map <leader>w :close<CR>
+map <leader>c :close<CR>
 " save session
 nnoremap <leader>s :mksession!<CR>
 " For when you forget to sudo.. Really Write the file.
