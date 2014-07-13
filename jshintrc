@@ -3,7 +3,6 @@
   "laxbreak": true,
   "eqnull": true,
 
-  "es5": true,
   "esnext": true,
   "iterator": true,
   "multistr": true,
@@ -12,7 +11,7 @@
   "supernew": true,
 
   "undef": true,
-  "latedef": true,
+  "latedef": "nofunc",
   "lastsemic": true,
   "unused": true,
   "sub": true,
