@@ -24,6 +24,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'henrik/vim-open-url'
 Plugin 'chriskempson/base16-vim'
 Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-markdown'
 
 " General Programming
 " -----------------------------------------------------------------------------
