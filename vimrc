@@ -25,6 +25,8 @@ Plugin 'henrik/vim-open-url'
 Plugin 'chriskempson/base16-vim'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-markdown'
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
 
 " General Programming
 " -----------------------------------------------------------------------------
