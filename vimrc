@@ -329,7 +329,6 @@ function! SetupWrapping()
   else
     set colorcolumn=81
   endif
-  let &showbreak='  '
 endfunction
 command! Wrap :call SetupWrapping()
 map <Leader>wl :Wrap<CR>
