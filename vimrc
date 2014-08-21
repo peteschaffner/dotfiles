@@ -48,6 +48,7 @@ Plugin 'elzr/vim-json'
 " -----------------------------------------------------------------------------
 Plugin 'othree/html5.vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'mattn/webapi-vim'
 
 " CSS
 " -----------------------------------------------------------------------------
@@ -292,6 +293,7 @@ nnoremap <leader>a :Ag
 " Emmet
 " -----------------------------------------------------------------------------
 let g:user_emmet_leader_key='<c-e>'
+let g:user_emmet_settings=webapi#json#decode(join(readfile(expand('~/.vim/snippets.json')), "\n"))
 
 " EasyMotion
 " -----------------------------------------------------------------------------
