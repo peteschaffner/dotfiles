@@ -20,6 +20,7 @@
   "forin": true,
 
   "node": true,
+  "browser": true,
 
   "camelcase": true,
   "quotmark": "single",
