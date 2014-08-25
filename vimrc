@@ -114,6 +114,14 @@ set sidescrolloff=15            " start scrolling when 15 columns away from edge
 set sidescroll=1                " more natural, incremental horizontal scrolling
 set nofoldenable                " don't fold by default
 
+" fast escape key
+set noesckeys
+set ttimeoutlen=0
+augroup FastEscape
+  autocmd!
+  au InsertEnter * set timeoutlen=1000
+  au InsertLeave * set timeoutlen=1000
+augroup END
 
 " -----------------------------------------------------------------------------
 " Formatting
