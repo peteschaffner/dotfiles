@@ -91,9 +91,7 @@ augroup END
 " -----------------------------------------------------------------------------
 " UI
 " -----------------------------------------------------------------------------
-set t_Co=256                    " use 256 colors
-let base16colorspace=256        " access colors present in 256 colorspace
-colorscheme base16-ocean        " set theme
+colorscheme base16-default      " set theme
 set background=dark             " dark theme variant
 set number                      " show line numbers
 set cursorline                  " highlight current line
