@@ -67,6 +67,7 @@ set shortmess+=filmnrxoOtT      " abbrev. of messages (avoids 'hit enter')
 set shortmess+=I                " remove splash screen
 set history=1000                " Store a ton of history (default is 20)
 set spell                       " spell checking on
+set spelllang=en,fr             " use French and English dictionaries
 set hidden                      " allow buffer switching without saving
 set autoread                    " reload files changed outside vim
 set completeopt-=preview        " don't show doc preview window
@@ -120,6 +121,7 @@ augroup FastEscape
   au InsertEnter * set timeoutlen=1000
   au InsertLeave * set timeoutlen=1000
 augroup END
+
 
 " -----------------------------------------------------------------------------
 " Formatting
