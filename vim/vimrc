@@ -141,6 +141,8 @@ set listchars=tab:\ \ ,trail:·,nbsp:.
 " Remove trailing whitespaces and ^M chars on save
 autocmd FileType javascript,css,html autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
+" Automatically wrap at 80 characters for Markdown
+autocmd BufRead,BufNewFile *.md setlocal textwidth=80
 
 " -----------------------------------------------------------------------------
 " Key (re)Mappings
