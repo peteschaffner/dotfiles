@@ -191,7 +191,7 @@ map <leader>z <C-z>
 " Quit
 map <leader>q :q<CR>
 " Delete current buffer
-nmap <leader>x :confirm bd<CR>
+nnoremap <leader>x :bp<cr>:bd #<cr>
 " close window/split
 map <leader>c :close<CR>
 " save session
