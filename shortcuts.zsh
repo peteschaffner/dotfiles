@@ -1,12 +1,19 @@
 #!/usr/bin/env zsh
 
-# Nested->Menu Item = \033Nested\033Menu Item
+# Key:
+# control => ^
+# option => ~
+# command => @
+# shift => $
+# Nested->Menu Item => \033Nested\033Menu Item
 
 # Sketch
 defaults write com.bohemiancoding.sketch3 NSUserKeyEquivalents '{
   "Hide Colors" = "@$c";
-  "Round to Nearest Pixel Edge" = "@~r";
   "Show Colors" = "@$c";
+  "Flatten Selection to Bitmap" = "@$f";
+  "Scale..." = "@^s";
+  "Round to Nearest Pixel Edge" = "@~r";
   "Top" = "@^k";
   "Right" = "@^l";
   "Bottom" = "@^j";
