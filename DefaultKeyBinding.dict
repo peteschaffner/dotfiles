@@ -1,3 +1,5 @@
+/* ~/Library/KeyBindings/DefaultKeyBinding.dict */
+
 { // General
   // uppercase word
   "^U" = (uppercaseWord:, moveWordForward:, moveWordBackward:);
