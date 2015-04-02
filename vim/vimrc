@@ -74,9 +74,9 @@ set autoread                    " reload files changed outside vim
 set completeopt-=preview        " don't show doc preview window
 
 " Turn off swap files and backups (legacy way of backing up files)
+set backupcopy=auto             " helps with firing file-change events on OS X
 set noswapfile
 set nobackup
-set nowb
 
 " Save undo history
 silent !mkdir ~/.vim/backups > /dev/null 2>&1
