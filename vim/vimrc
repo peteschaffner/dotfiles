@@ -144,7 +144,7 @@ set matchpairs+=<:>             " match angle brackets on '%'
 
 " Highlight problematic whitespace
 set list
-set listchars=tab:\ \ ,trail:·,nbsp:.
+set listchars=tab:\‣\ ,trail:·,nbsp:.
 
 " Remove trailing whitespaces and ^M chars on save
 autocmd FileType javascript,css,html autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
