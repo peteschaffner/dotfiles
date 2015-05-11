@@ -1,28 +1,10 @@
 {
-  "laxcomma": true,
-  "laxbreak": true,
   "eqnull": true,
-
   "esnext": true,
-  "iterator": true,
-  "multistr": true,
-  "scripturl": true,
-  "smarttabs": true,
   "supernew": true,
-
   "undef": true,
   "latedef": "nofunc",
-  "lastsemic": true,
   "unused": true,
-  "sub": true,
-  "proto": true,
-  "newcap": true,
   "forin": true,
-
-  "node": true,
-  "browser": true,
-
-  "camelcase": true,
-  "quotmark": "single",
-  "indent": 2
+  "asi": true
 }
