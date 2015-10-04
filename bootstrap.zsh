@@ -10,9 +10,9 @@ brew install ag caskroom/cask/brew-cask cmake fasd git git-extras hub n vim
 brew cask install karabiner seil
 
 
-#########################
+###########
 # Setup Vim
-#########################
+###########
 
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
@@ -27,7 +27,7 @@ git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$H
 setopt EXTENDED_GLOB
 
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
-    ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
+  ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
 
 chsh -s /bin/zsh
@@ -40,7 +40,7 @@ chsh -s /bin/zsh
 dotfiles=(~/.dotfiles/{agignore,git*,jshintrc,netrc,tern-config,vim,z*})
 
 for dotfile in $dotfiles; do
-	ln -fs "$dotfile" ~/".${dotfile:t}"
+  ln -fs "$dotfile" ~/".${dotfile:t}"
 done
 
 
