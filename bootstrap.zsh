@@ -54,9 +54,9 @@ mkdir -p $keyindingsDir
 ln -fs ~/.dotfiles/DefaultKeyBinding.dict $keyindingsDir
 
 
-###################
-# Set app shortcuts
-###################
+################################
+# Set app shortcuts and defaults
+################################
 
 # Key:
 # control => ^
@@ -81,3 +81,8 @@ defaults write com.bohemiancoding.sketch3 NSUserKeyEquivalents '{
     "\033Arrange\033Distribute Objects\033Vertically" = "$@^-";
     "\033Arrange\033Distribute Objects\033Horizontally" = "$@^\\";
 }'
+
+defaults write com.bohemiancoding.sketch3 bitmapFlattenScale 2
+defaults write com.bohemiancoding.sketch3 zoomInOnSelection 1
+defaults write com.bohemiancoding.sketch3 suffixDuplicatedLayers 0
+defaults write com.bohemiancoding.sketch3 stripStyleWhenPastingText 1
