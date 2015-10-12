@@ -96,7 +96,7 @@ augroup END
 " UI
 " -----------------------------------------------------------------------------
 colorscheme base16-default      " set theme
-set background=dark             " dark theme variant
+set background=light            " dark theme variant
 set number                      " show line numbers
 set cursorline                  " highlight current line
 set colorcolumn=81              " line to show 80 character mark
@@ -115,6 +115,7 @@ set scrolloff=8                 " start scrolling when 8 lines away from margins
 set sidescrolloff=15            " start scrolling when 15 columns away from edge
 set sidescroll=1                " more natural, incremental horizontal scrolling
 set nofoldenable                " don't fold by default
+set title                       " update terminal window title
 
 " fast escape key
 set noesckeys
