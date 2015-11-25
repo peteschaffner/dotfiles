@@ -12,20 +12,12 @@ curl -L https://www.npmjs.com/install.sh | sh
 brew cask install karabiner seil
 
 
-###########
-# Setup Vim
-###########
-
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-vim +PluginInstall +qall
-
-
 ##############
 # Setup Prezto
 ##############
 
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-
+zsh
 setopt EXTENDED_GLOB
 
 for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
@@ -44,6 +36,14 @@ dotfiles=(~/.dotfiles/{agignore,git*,jshintrc,netrc,tern-config,vim,z*})
 for dotfile in $dotfiles; do
   ln -fs "$dotfile" ~/".${dotfile:t}"
 done
+
+
+###########
+# Setup Vim
+###########
+
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall
 
 
 #########################
