@@ -6,7 +6,9 @@
 
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew doctor
-brew install ag caskroom/cask/brew-cask cmake fasd git git-extras hub n vim
+brew install ag caskroom/cask/brew-cask cmake fasd git git-extras hub node vim
+# Install NPM separately
+curl -L https://www.npmjs.com/install.sh | sh
 brew cask install karabiner seil
 
 

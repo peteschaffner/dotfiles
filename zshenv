@@ -11,3 +11,4 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
 fi
 
 export GIT_EDITOR='vim'
+export NPM_CONFIG_PREFIX=~/.node
