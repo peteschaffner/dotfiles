@@ -13,17 +13,5 @@ Icon
 Session.vim
 .netrwhist
 
-# Sublime Text
-*.sublime-workspace
-
 # Espresso
 *.esproj
-
-# Todo lists & bug lists
-tasks
-.tasks.done
-bugs
-.bugs.done
-
-# Tern
-.tern-port
