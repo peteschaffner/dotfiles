@@ -1,9 +1,11 @@
 {
   "libs": [
     "browser",
-    "ecma5"
+    "ecmascript"
   ],
   "plugins": {
-    "node": {}
+    "node": {},
+    "es_modules": {},
+    "complete_strings": {}
   }
 }
