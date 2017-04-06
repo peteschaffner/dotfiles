@@ -175,6 +175,8 @@
 	</data>
 	<key>CursorType</key>
 	<integer>0</integer>
+	<key>DisableANSIColor</key>
+	<false/>
 	<key>Font</key>
 	<data>
 	YnBsaXN0MDDUAQIDBAUGGBlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
@@ -245,6 +247,8 @@
 	U09iamVjdF8QD05TS2V5ZWRBcmNoaXZlctEXGFRyb290gAEIERojLTI3O0FITltib3Fz
 	eIOMlJegsrW6AAAAAAAAAQEAAAAAAAAAGQAAAAAAAAAAAAAAAAAAALw=
 	</data>
+	<key>UseBrightBold</key>
+	<false/>
 	<key>VisualBell</key>
 	<true/>
 	<key>WindowTitle</key>
