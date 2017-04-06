@@ -74,7 +74,7 @@ defaults write com.bohemiancoding.sketch3 NSUserKeyEquivalents '{
     "Show Colors" = "@$c";
     "Flatten Selection to Bitmap" = "@$f";
     "Scale..." = "@^s";
-    "Round to Nearest Pixel Edge" = "@~r";
+    "Round to Pixel" = "@~r";
     "Top" = "@^k";
     "Right" = "@^l";
     "Bottom" = "@^j";
