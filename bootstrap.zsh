@@ -58,7 +58,7 @@ ln -fs ~/.dotfiles/DefaultKeyBinding.dict $keyindingsDir
 
 
 ################################
-# Set app shortcuts and defaults
+# Set app shortcuts
 ################################
 
 # Key:
@@ -75,17 +75,12 @@ defaults write com.bohemiancoding.sketch3 NSUserKeyEquivalents '{
     "Flatten Selection to Bitmap" = "@$f";
     "Scale..." = "@^s";
     "Round to Pixel" = "@~r";
-    "Top" = "@^k";
-    "Right" = "@^l";
-    "Bottom" = "@^j";
-    "Left" = "@^h";
-    "\033Arrange\033Align Objects\033Vertically" = "@^-";
-    "\033Arrange\033Align Objects\033Horizontally" = "@^\\";
-    "\033Arrange\033Distribute Objects\033Vertically" = "$@^-";
-    "\033Arrange\033Distribute Objects\033Horizontally" = "$@^\\";
+    "\033Arrange\033Align\033Top" = "@^k";
+    "\033Arrange\033Align\033Right" = "@^l";
+    "\033Arrange\033Align\033Bottom" = "@^j";
+    "\033Arrange\033Align\033Left" = "@^h";
+    "\033Arrange\033Align\033Vertically" = "@^-";
+    "\033Arrange\033Align\033Horizontally" = "@^\\";
+    "\033Arrange\033Distribute\033Vertically" = "$@^-";
+    "\033Arrange\033Distribute\033Horizontally" = "$@^\\";
 }'
-
-defaults write com.bohemiancoding.sketch3 bitmapFlattenScale 2
-defaults write com.bohemiancoding.sketch3 zoomInOnSelection 1
-defaults write com.bohemiancoding.sketch3 suffixDuplicatedLayers 0
-defaults write com.bohemiancoding.sketch3 stripStyleWhenPastingText 1
