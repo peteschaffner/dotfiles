@@ -1,0 +1,48 @@
+#!/bin/sh
+# Symlink these dotfiles into place.
+#
+#   home/<file>     -> ~/<file>
+#   config/<name>   -> ~/.config/<name>
+#
+# Safe and idempotent: an existing correct symlink is left alone; an existing
+# real file/dir is backed up to <name>.bak-<timestamp> before linking.
+#
+# Usage:  git clone <url> ~/dotfiles && ~/dotfiles/install
+set -eu
+
+DOTFILES="$(cd "$(dirname "$0")" && pwd)"
+STAMP="$(date +%Y%m%d-%H%M%S)"
+
+link() { # link <source-in-repo> <target-path>
+  src="$1"
+  dst="$2"
+  if [ -L "$dst" ] && [ "$(readlink "$dst")" = "$src" ]; then
+    printf '  ok     %s\n' "$dst"
+    return
+  fi
+  if [ -L "$dst" ]; then
+    rm "$dst" # replace any other existing symlink (e.g. old iCloud link)
+  elif [ -e "$dst" ]; then
+    mv "$dst" "$dst.bak-$STAMP"
+    printf '  backup %s -> %s.bak-%s\n' "$dst" "$dst" "$STAMP"
+  fi
+  mkdir -p "$(dirname "$dst")"
+  ln -s "$src" "$dst"
+  printf '  link   %s -> %s\n' "$dst" "$src"
+}
+
+echo "Linking home dotfiles:"
+for f in "$DOTFILES"/home/.*; do
+  name="$(basename "$f")"
+  case "$name" in . | ..) continue ;; esac
+  [ -f "$f" ] || continue
+  link "$f" "$HOME/$name"
+done
+
+echo "Linking ~/.config entries:"
+mkdir -p "$HOME/.config"
+for d in "$DOTFILES"/config/*; do
+  link "$d" "$HOME/.config/$(basename "$d")"
+done
+
+echo "Done."

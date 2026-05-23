@@ -1,0 +1,5 @@
+# macOS noise
+.DS_Store
+
+# Ghostty's custom app icon (large binary, optional, referenced commented-out)
+*.icns

@@ -1,0 +1,26 @@
+[user]
+	email = peteschaffner@icloud.com
+	name = Pete Schaffner
+[init]
+	defaultBranch = master
+[alias]
+	lg = log --graph --abbrev-commit --decorate --date=relative --all \
+	--pretty=format:'%C(yellow)%h%C(reset) - %C(cyan)%cd%C(reset) %C(auto)%d%C(reset)%n%C(auto)%s%C(reset) %C(brightblack)- %an%C(reset)'
+	pr-review = "!f() { \\\n  git fetch -q origin; \\\n  base=$(gh pr view --json baseRefName -q .baseRefName 2>/dev/null); \\\n  [ -n \"$base\" ] || base=master; \\\n  git difftool \"origin/$base...HEAD\"; \\\n}; f"
+[core]
+	editor = cot -w
+[diff]
+	tool = Kaleidoscope
+[difftool]
+	prompt = false
+	trustExitCode = true
+[merge]
+	tool = Kaleidoscope
+[mergetool]
+	prompt = false
+	keepBackup = true
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
