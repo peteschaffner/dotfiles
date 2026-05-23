@@ -5,8 +5,8 @@ Personal config, symlinked into place.
 ## Setup on a new machine
 
 ```sh
-git clone git@github.com:peteschaffner/dotfiles.git ~/dotfiles
-~/dotfiles/install
+git clone git@github.com:peteschaffner/dotfiles.git ~/Developer/dotfiles
+~/Developer/dotfiles/install
 ```
 
 `install` symlinks everything into `~` / `~/.config`. It's safe to re-run: an
@@ -28,10 +28,10 @@ Files in `~` are symlinks into this repo, so edits are live immediately — no
 need to re-run `install`. To save changes:
 
 ```sh
-cd ~/dotfiles && git add -A && git commit && git push
+cd ~/Developer/dotfiles && git add -A && git commit && git push
 ```
 
-Run `~/dotfiles/install` again only when adding a *new* file to track.
+Run `~/Developer/dotfiles/install` again only when adding a *new* file to track.
 
 ## Notes
 
