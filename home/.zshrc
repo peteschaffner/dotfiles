@@ -45,14 +45,20 @@ setopt EXTENDED_HISTORY          # timestamp + duration in history file
 setopt prompt_subst
 autoload -Uz vcs_info
 
-zstyle ':vcs_info:git*' formats '(%b)'
+zstyle ':vcs_info:git*' formats '%b'
 zstyle ':vcs_info:*' enable git
 
 precmd() {
   vcs_info
   # Only add the branch part if vcs_info has content
   if [[ -n $vcs_info_msg_0_ ]]; then
-    GIT_BRANCH=" %F{magenta}${vcs_info_msg_0_}%f"
+    local branch=$vcs_info_msg_0_
+    # Cap the branch name so the prompt never exceeds half the terminal width.
+    local max=$(( COLUMNS / 2 ))
+    if (( ${#branch} > max )); then
+      branch="${branch[1,max-1]}…"
+    fi
+    GIT_BRANCH=" %F{magenta}(${branch})%f"
   else
     GIT_BRANCH=""
   fi

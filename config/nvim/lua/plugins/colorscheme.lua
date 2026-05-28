@@ -35,17 +35,41 @@ return {
     -- sets per-theme (#282a2e dark / #e0e0e0 light) and flips on its own.
     local function tweak()
       for _, group in ipairs({
-        "Normal", "NormalNC", "NormalFloat", "FloatBorder",
+        "Normal", "NormalNC",
         "SignColumn", "EndOfBuffer", "MsgArea", "TabLine", "TabLineFill",
         "StatusLine", "StatusLineNC", "WinBar", "WinBarNC",
         "NeoTreeNormal", "NeoTreeNormalNC", "NeoTreeEndOfBuffer",
-        "TelescopeNormal", "TelescopeBorder",
       }) do
         vim.api.nvim_set_hl(0, group, { bg = "none" })
       end
-      -- base16 base02 (the muted line color) = the bg base16 gives Visual.
+      -- base16 base02 = muted line color (the bg base16 gives Visual).
       local muted = vim.api.nvim_get_hl(0, { name = "Visual" }).bg
       vim.api.nvim_set_hl(0, "WinSeparator", { fg = muted, bg = "none" })
+      -- Telescope: meld with the terminal background -- every pane uses the
+      -- theme bg (opaque, so no buffer bleed-through and no dark inner row from
+      -- base16's darker prompt bar), with a muted outline as the only framing
+      -- and a de-redded title + prompt icon. base16's selection bar is left as
+      -- the one accent inside.
+      local termbg = vim.api.nvim_get_hl(0, { name = "NormalFloat" }).bg
+      local text = vim.api.nvim_get_hl(0, { name = "Pmenu" }).fg
+      for _, g in ipairs({
+        "TelescopeNormal", "TelescopePromptNormal",
+        "TelescopeResultsNormal", "TelescopePreviewNormal",
+      }) do
+        vim.api.nvim_set_hl(0, g, { fg = text, bg = termbg })
+      end
+      for _, g in ipairs({
+        "TelescopeBorder", "TelescopePromptBorder",
+        "TelescopeResultsBorder", "TelescopePreviewBorder",
+      }) do
+        vim.api.nvim_set_hl(0, g, { fg = muted, bg = termbg })
+      end
+      for _, g in ipairs({
+        "TelescopePromptTitle", "TelescopeResultsTitle", "TelescopePreviewTitle",
+      }) do
+        vim.api.nvim_set_hl(0, g, { fg = text, bg = termbg })
+      end
+      vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { fg = text, bg = termbg })
       -- :colorscheme clears render-markdown's RenderMarkdownCode->ColorColumn
       -- link, and its own reload doesn't restore it. Re-link to ColorColumn
       -- (base16 sets it per-theme), so the code bg always tracks the theme.
